@@ -1,0 +1,160 @@
+.video-section {
+    text-align: center;
+    padding: 55px;
+    background: hsl(0, 1%, 29%);
+    color: white;
+    background: url('../../../../public/Imgs/pexels-elijahsad-3473569.jpg') no-repeat center center/cover;
+
+}
+
+.video-section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    /* padding-top: 80px; */
+    color: #333;
+}
+.up{
+    color:#ffffff;
+}
+p{
+   color:#000; 
+}
+h4{
+    color: #000;
+}
+
+
+
+
+/* Section Styling */
+.about-us, .feedback-section {
+    text-align: center;
+    padding: 50px 20px;
+    /* background: #ffffff; */
+    background: #000;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+    width: 80%;
+}
+
+/* Headings */
+.about-us h2, .feedback-section h2 {
+    font-size: 2.5rem;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+/* Team Section */
+.team-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.team-member {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.team-member img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    /* object-fit: cover; */
+    border: 4px solid #007bff;
+}
+
+.team-member h4 {
+    margin-top: 10px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.team-member p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+}
+
+/* Feedback Section */
+.feedback-carousel {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.feedback-wrapper {
+    display: flex;
+    gap: 20px;
+    animation: slide 10s infinite ease-in-out;
+}
+
+.feedback-card {
+    background: #fff;
+    padding: 20px;
+    width: 280px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.feedback-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    /* object-fit: cover; */
+    margin-bottom: 10px;
+}
+
+.feedback-card:hover {
+    transform: scale(1.05);
+}
+
+.stars {
+    font-size: 1.2rem;
+    color: gold;
+    margin: 5px 0;
+}
+
+/* Carousel Animation */
+@keyframes slide {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-300px); }
+    50% { transform: translateX(-600px); }
+    75% { transform: translateX(-900px); }
+    100% { transform: translateX(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .team-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feedback-wrapper {
+        flex-direction: column;
+    }
+}
+
+

@@ -1,0 +1,91 @@
+<div class="container mt-4">
+    <div class="card shadow-lg p-4">
+      <h2 class="text-center text-primary mb-3">Add New Vehicle</h2>
+      
+      <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+        
+        <div class="row">
+          <!-- Vehicle Name -->
+          <div class="col-md-6">
+            <label class="form-label">Vehicle Name:</label>
+            <input type="text" class="form-control" formControlName="name" placeholder="Enter Vehicle Name">
+            <small class="text-danger" *ngIf="vehicleForm.get('name')?.invalid && vehicleForm.get('name')?.touched">
+              Name is required!
+            </small>
+          </div>
+  
+          <!-- Number Plate -->
+          <div class="col-md-6">
+            <label class="form-label">Number Plate:</label>
+            <input type="text" class="form-control" formControlName="numberPlate" placeholder="TN04GH3456">
+          </div>
+        </div>
+  
+        <div class="row mt-3">
+          <!-- Vehicle Type -->
+          <div class="col-md-6">
+            <label class="form-label">Vehicle Type:</label>
+            <select class="form-select" formControlName="type">
+              <option value="CAR">Car</option>
+              <option value="BIKE">Bike</option>
+            </select>
+          </div>
+  
+          <!-- Available Count -->
+          <div class="col-md-6">
+            <label class="form-label">Available Count:</label>
+            <input type="number" class="form-control" formControlName="availableCount">
+          </div>
+        </div>
+  
+        <div class="row mt-3">
+          <!-- Rental Price -->
+          <div class="col-md-6">
+            <label class="form-label">Rental Price (₹):</label>
+            <input type="number" class="form-control" formControlName="rentalPrice">
+          </div>
+  
+          <!-- Total KMs Driven -->
+          <div class="col-md-6">
+            <label class="form-label">Total KMs Driven:</label>
+            <input type="number" class="form-control" formControlName="totalKmsDriven">
+          </div>
+        </div>
+  
+        <div class="row mt-3">
+          <!-- Needs Service -->
+          <div class="col-md-6">
+            <label class="form-label">Needs Service:</label>
+            <select class="form-select" formControlName="needsService">
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+  
+          <!-- Last Service At -->
+          <div class="col-md-6">
+            <label class="form-label">Last Service At (KM):</label>
+            <input type="number" class="form-control" formControlName="lastServiceAt">
+          </div>
+        </div>
+  
+        <!-- Image Upload -->
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <label class="form-label">Upload Image:</label>
+            <input type="file" class="form-control" (change)="onFileSelected($event)">
+            <img *ngIf="imagePreview" [src]="imagePreview" class="img-thumbnail mt-2" width="150">
+          </div>
+        </div>
+  
+        <!-- Submit Button -->
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary px-4" [disabled]="vehicleForm.invalid">
+            <i class="fas fa-save"></i> Add Vehicle
+          </button>
+        </div>
+  
+      </form>
+    </div>
+  </div>
+  

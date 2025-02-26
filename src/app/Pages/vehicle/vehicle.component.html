@@ -1,0 +1,48 @@
+
+
+<!-- <img src="Imgs/" class="hero-image"/> -->
+<section class="all">
+  <h2>Ride Your Way – Rent with Ease!</h2>
+  <div class="vehicle-container">
+    <div class="vehicle-card" *ngFor="let vehicle of vehicles">
+      <!-- <img [src]="'/' + vehicle.imageUrl" alt="{{ vehicle.name }}" class="vehicle-image"/> -->
+
+      <img [src]="vehicle.imageUrl" alt="{{ vehicle.name }}" class="vehicle-image"/>
+      <div class="vehicle-details">
+        <h3>{{ vehicle.name }}</h3>
+        <p><strong>Number Plate:</strong> {{ vehicle.numberPlate }}</p>
+        <p><strong>Vehicle ID:</strong> {{ vehicle.id }}</p>
+        <p><strong>Total KMs Driven:</strong> {{ vehicle.totalKmsDriven }}</p>
+        <p><strong>Type:</strong> {{ vehicle.type }}</p>
+        <button class="price-tag">{{ vehicle.rentalPrice | currency:'INR' }}/Day</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- <table border="1">
+    <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Number Plate</th>
+    <th>Rental Price</th>
+    <th>Available Count</th>
+    <th>Total KMs Driven</th>
+    <th>Needs Service</th>
+    <th>Last Service At (KM)</th>
+  </tr>
+  <tr *ngFor="let vehicle of vehicles">
+    <td>{{ vehicle.id }}</td>
+    <td>{{ vehicle.name }}</td>
+    <td>{{ vehicle.type }}</td>
+    <td>{{ vehicle.numberPlate }}</td>
+    <td>{{ vehicle.rentalPrice | currency:'INR' }}</td>
+    <td>{{ vehicle.availableCount }}</td>
+    <td>{{ vehicle.totalKmsDriven }}</td>
+    <td>{{ vehicle.needsService ? 'Yes' : 'No' }}</td>
+    <td>{{ vehicle.lastServiceAt }}</td>
+  </tr>
+</table>   -->
+    </section>
+
+    

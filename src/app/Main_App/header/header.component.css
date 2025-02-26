@@ -1,0 +1,34 @@
+.navbar {
+    background: rgba(0, 0, 0, 0.4) !important; /* Ensure it overrides Bootstrap */
+    backdrop-filter: blur(5px);
+    transition: background 0.3s ease-in-out;
+}
+
+/* Change navbar text color to match the theme */
+.navbar a {
+    color: white !important; /* Ensures visibility */
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: #f8d210 !important; /* Adds a highlight effect */
+}
+
+/* Adjust navbar height and padding */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white !important;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 10px; /* Adds space between nav items */
+}
+
+/* Optional: Fix navbar to top if needed */
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
