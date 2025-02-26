@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,14 +6,24 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements AfterViewInit {
   @ViewChild('container') container!: ElementRef;
 
+  ngAfterViewInit(): void {
+    if (!this.container) {
+      console.error("Container element not found!");
+    }
+  }
+
   toggleForm(isSignUp: boolean): void {
-    if (isSignUp) {
-      this.container.nativeElement.classList.add('active');
+    if (this.container) {
+      if (isSignUp) {
+        this.container.nativeElement.classList.add('active');
+      } else {
+        this.container.nativeElement.classList.remove('active');
+      }
     } else {
-      this.container.nativeElement.classList.remove('active');
+      console.error("Container is undefined");
     }
   }
 }

@@ -28,9 +28,5 @@ export const routes: Routes = [
         path:'login',
         loadComponent :()=>import('./Main_App/login/login.component').then((c)=> c.LoginComponent),
     },
-    {
-        path:'signup',
-        loadComponent :()=>import('./Main_App/signup/signup.component').then((c)=> c.SignupComponent),
-    },
 
 ];
