@@ -2,14 +2,14 @@
   <div class="container" id="container" #container>
     <div class="form-container sign-up">
       <form>
-        <h1>Create Account</h1>
+        <h1 class="v">Create Account</h1>
         <div class="social-icons">
           <a href="#" class="icon"><i class="bi bi-browser-chrome"></i></a>
           <a href="#" class="icon"><i class="bi bi-facebook"></i></a>
           <a href="#" class="icon"><i class="bi bi-github"></i></a>
           <a href="#" class="icon"><i class="bi bi-linkedin"></i></a>
         </div>
-        <span>or use your email for registration</span>
+        <span class="v">or use your email for registration</span>
         <input type="text" placeholder="Name">
         <input type="email" placeholder="Email">
         <input type="password" placeholder="Password">
@@ -26,11 +26,17 @@
           <a href="#" class="icon"><i class="bi bi-github"></i></a>
           <a href="#" class="icon"><i class="bi bi-linkedin"></i></a>
         </div>
-        <span>or use your email password</span>
-        <input type="email" placeholder="Email">
-        <input type="password" placeholder="Password">
+        <span class="v">or use your email password</span>
+        <input type="email" placeholder="Email" (input)="updateEmail($event)">
+        <input type="password" placeholder="Password" (input)="updatePassword($event)">
         <a href="#">Forget Your Password?</a>
-        <button (click)="toggleForm(true)">Sign In</button>
+        <button type="button" (click)="login()">Sign In</button>
+
+        <!-- <input type="email" placeholder="Email">
+        <a href="#">Forget Your Password?</a>
+        <input type="password" placeholder="Password">
+        <button type="button" (click)="login()">Sign In</button> -->
+        <!-- <button (click)="toggleForm(true)">Sign In</button> -->
       </form>
     </div>
 

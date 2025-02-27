@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminDashBoardComponent } from './admin-dash-board.component';
+import { UserComponent } from './user.component';
 
-describe('AdminDashBoardComponent', () => {
-  let component: AdminDashBoardComponent;
-  let fixture: ComponentFixture<AdminDashBoardComponent>;
+describe('UserComponent', () => {
+  let component: UserComponent;
+  let fixture: ComponentFixture<UserComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AdminDashBoardComponent]
+      imports: [UserComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AdminDashBoardComponent);
+    fixture = TestBed.createComponent(UserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
