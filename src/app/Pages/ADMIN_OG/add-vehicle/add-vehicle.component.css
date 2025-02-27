@@ -17,3 +17,12 @@
     font-size: 1.1rem;
   }
   
+  .all{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url('../../../../../public/Imgs/a-man-standing-next-to-a-motel-with-a-neon-sign-ntdlrf8thf2tplaf.jpg') 
+    center center/cover;
+  }

@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-add-vehicle',
   standalone: true,
   templateUrl: './add-vehicle.component.html',
   styleUrls: ['./add-vehicle.component.css'],
-  imports: [HttpClientModule, CommonModule, ReactiveFormsModule]
+  imports: [HttpClientModule, CommonModule, ReactiveFormsModule,RouterModule ,RouterLink]
 })
 export class AddVehicleComponent {
   vehicleForm: FormGroup;
