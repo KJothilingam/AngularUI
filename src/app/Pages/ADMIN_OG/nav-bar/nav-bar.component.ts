@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { AuthService } from '../../../service/auth.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,15 +10,15 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
+  isLoggedIn = computed(() => this.authService.isLoggedIn());
+  userRole = computed(() => this.authService.getUserRole());
 
-  // constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  // // Getter function to return the signal value properly
-  // get isLoggedIn() {
-  //   return this.authService.isLoggedIn(); // ✅ Call the signal
-  // }
-
-  // logout() {
-  //   this.authService.logout();
-  // }
+  logout() {
+    console.log("Current Role:", this.authService.getUserRole()); 
+    console.log("Is Logged In:", this.authService.isLoggedIn());
+    this.authService.logout(); // ✅ Clear login state
+    this.router.navigate(['/']); // ✅ Redirect to login page
+  }
 }

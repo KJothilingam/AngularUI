@@ -78,6 +78,12 @@ export class LoginComponent {
       params: { email: this.email(), password: this.password() }
     }).subscribe(response => {
       if (response.authenticated) {
+        this.authService.setLoginStatus(true, response.role);
+
+      // ✅ Log role and status in console
+      console.log("Login Successful!");
+      console.log("User Role:", this.authService.getUserRole());
+      console.log("Is Logged In:", this.authService.isLoggedIn());
         if (response.role === 'ADMIN') {
           this.router.navigate(['/admin']);
         } else if (response.role === 'RENTER') {
