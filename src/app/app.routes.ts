@@ -45,5 +45,10 @@ export const routes: Routes = [
         loadComponent: () => import('./Pages/ADMIN_OG/rental/rental.component').then((c) => c.RentalComponent)
     
     },
+    {
+        path: 'modify',
+        loadComponent: () => import('./Pages/ADMIN_OG/modify/modify.component').then((c) => c.ModifyComponent)
+
+    },
 
 ];

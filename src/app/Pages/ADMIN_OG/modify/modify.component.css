@@ -1,0 +1,141 @@
+.all {
+    /* display: flex;
+    justify-content: center;  
+    align-items: center; 
+    height: 100vh;
+    background: #000;
+    color: rgb(0, 0, 0);
+    padding-top: 100px; */
+    background: url('../../../../../public/Imgs/adrien-vajas-Apa13LFPClU-unsplash.jpg') no-repeat center center/cover;
+
+}
+h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;  
+    align-items: center; 
+    color: rgb(255, 255, 255);
+    padding-top: 80px; 
+}
+
+/* Ensure the body and html take full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content should take all available space */
+.all {
+    flex: 1;
+}
+
+.vehicle-container {
+    display: flex;
+    flex-wrap: wrap; /* Ensures items move to the next line when needed */
+    gap: 20px;
+    justify-content: center; /* Align items to the center */
+    align-items: flex-start; /* Align items at the top */
+    padding: 100px;
+}
+
+.vehicle-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+}
+
+.vehicle-card:hover {
+    transform: scale(1.05);
+}
+
+.vehicle-image {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.vehicle-details {
+    padding: 5px;
+}
+
+.price-tag {
+    background: #ffcc00;
+    border: none;
+    padding: 8px 12px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.price-tag {
+    background: #ffcc00;
+    border: none;
+    padding: 8px 12px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.delete-button {
+    background: #ff4d4d;
+    border: none;
+    padding: 8px 12px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    margin-left: 10px;
+}
+
+.delete-button:hover {
+    background: #e60000;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.update-btn {
+    background: #007bff;  /* Blue */
+    border: none;
+    padding: 8px 12px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+}
+
+.price-tag {
+    background: #ffcc00;
+    border: none;
+    padding: 8px 12px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background: #dc3545;  /* Red */
+    border: none;
+    padding: 8px 12px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+}

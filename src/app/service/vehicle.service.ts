@@ -15,6 +15,10 @@ export class VehicleService {
   getVehicles(): Observable<Vehicle[]> {
     return this.http.get<Vehicle[]>(this.apiUrl);
   }
+  deleteVehicle(vehicleId: number) {
+    return this.http.delete(`http://localhost:8080/vehicles/${vehicleId}`);
+  }
+  
 
   // // Fetch a single vehicle by ID
   // getVehicleById(id: number): Observable<Vehicle> {
