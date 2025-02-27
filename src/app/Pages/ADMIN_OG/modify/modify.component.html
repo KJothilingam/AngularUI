@@ -1,31 +1,48 @@
-
 <app-nav-bar></app-nav-bar>
-<section class="all">
-    <section>
 
-        <h2>Ride Your Way – Rent with Ease!</h2>
-    </section>
-    
-    <div class="vehicle-container">
-        <div class="vehicle-card" *ngFor="let vehicle of vehicles">
-            <img [src]="vehicle.imageUrl" alt="{{ vehicle.name }}" class="vehicle-image"/>
-            <div class="vehicle-details">
-                <h3>{{ vehicle.name }}</h3>
-                <p><strong>Number Plate:</strong> {{ vehicle.numberPlate }}</p>
-                <p><strong>Vehicle ID:</strong> {{ vehicle.id }}</p>
-                <p><strong>Total KMs Driven:</strong> {{ vehicle.totalKmsDriven }}</p>
-                <p><strong>Type:</strong> {{ vehicle.type }}</p>
-                
-              <!-- Buttons Row -->
-            <div class="button-container">
-                <button class="update-btn" (click)="updateVehicle(vehicle)">Update</button>
-                <button class="price-tag">{{ vehicle.rentalPrice | currency:'INR' }}/Day</button>
-                <button class="delete-btn" (click)="deleteVehicle(vehicle.id)">Delete</button>
-            </div>
-            </div>
+<section class="all">
+  <section>
+    <h2>Ride Your Way – Rent with Ease!</h2>
+  </section>
+
+  <div class="vehicle-container">
+    <div class="vehicle-card" *ngFor="let vehicle of vehicles">
+      <img [src]="vehicle.imageUrl" alt="{{ vehicle.name }}" class="vehicle-image"/>
+      <div class="vehicle-details">
+        <h3>{{ vehicle.name }}</h3>
+        <p><strong>Number Plate:</strong> {{ vehicle.numberPlate }}</p>
+        <p><strong>Vehicle ID:</strong> {{ vehicle.id }}</p>
+        <p><strong>Total KMs Driven:</strong> {{ vehicle.totalKmsDriven }}</p>
+        <p><strong>Type:</strong> {{ vehicle.type }}</p>
+
+        <div class="button-container">
+          <button class="update-btn" (click)="editVehicle(vehicle)">Update</button>
+          <button class="price-tag">{{ vehicle.rentalPrice | currency:'INR' }}/Day</button>
+          <button class="delete-btn" (click)="deleteVehicle(vehicle.id)">Delete</button>
         </div>
+      </div>
     </div>
-      
+  </div>
 </section>
-  
-      
+
+<!-- 🚀 Update Form (Hidden Initially) -->
+<div class="update-form" *ngIf="showUpdateForm">
+  <h2>Update Vehicle</h2>
+  <label>Name: <input type="text" [(ngModel)]="selectedVehicle!.name"></label>
+  <label>Number Plate: <input type="text" [(ngModel)]="selectedVehicle!.numberPlate"></label>
+  <label>Rental Price: <input type="number" [(ngModel)]="selectedVehicle!.rentalPrice"></label>
+  <label>Total KMs Driven: <input type="number" [(ngModel)]="selectedVehicle!.totalKmsDriven"></label>
+  <label>Type: <input type="text" [(ngModel)]="selectedVehicle!.type"></label>
+  <label>Needs Service: 
+    <select [(ngModel)]="selectedVehicle!.needsService">
+      <option [value]="true">Yes</option>
+      <option [value]="false">No</option>
+    </select>
+  </label>
+  <label>Image URL: <input type="text" [(ngModel)]="selectedVehicle!.imageUrl"></label>
+
+  <div class="form-buttons">
+    <button (click)="updateVehicle()">Save</button>
+    <button class="cancel-btn" (click)="cancelUpdate()">Cancel</button>
+  </div>
+</div>

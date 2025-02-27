@@ -4,63 +4,74 @@ import { Vehicle } from '../../../Interface/vehicle.component';
 import { VehicleService } from '../../../service/vehicle.service';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms'; // ✅ Import FormsModule for ngModel
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-modify',
-  imports: [ CommonModule, NavBarComponent],
-  standalone:true,
+  standalone: true,
+  imports: [CommonModule, NavBarComponent, FormsModule, MatSnackBarModule], // ✅ Import FormsModule
   templateUrl: './modify.component.html',
   styleUrl: './modify.component.css'
 })
 export class ModifyComponent {
   vehicles: Vehicle[] = [];
-  
-  constructor(private vehicleService: VehicleService, private http: HttpClient) {} ;// ✅ Inject HttpClient
+  showUpdateForm: boolean = false;
+  selectedVehicle: Vehicle | null = null;
 
-    // constructor(private vehicleService: VehicleService) {}
-  
-    ngOnInit(): void {
-      this.getAllVehicles();
-    }
-  
-    getAllVehicles() {
-      this.vehicleService.getVehicles().subscribe((data) => {
-        this.vehicles = data;
-      });
-    }
+  constructor(private vehicleService: VehicleService, private http: HttpClient, private snackBar: MatSnackBar) {}
 
-    deleteVehicle(vehicleId: number) {
-      this.http.delete(`http://localhost:8080/vehicles/${vehicleId}`, { responseType: 'text' }).subscribe({
-        next: (response) => {
-          console.log("Response from server:", response);
-          alert(response);  // Now it will correctly show "Vehicle deleted successfully"
-          
-          // Remove deleted vehicle from UI
-          this.vehicles = this.vehicles.filter(vehicle => vehicle.id !== vehicleId);
-        },
-        error: (error) => {
-          console.error("Error deleting vehicle:", error);
-          alert("Failed to delete vehicle. Check console for details.");
-        }
-      });
-    }
+  ngOnInit(): void {
+    this.getAllVehicles();
+  }
 
-    updateVehicle(vehicle: Vehicle) {
-  const updatedVehicle = { ...vehicle, rentalPrice: prompt("Enter new rental price:", vehicle.rentalPrice.toString()) };
+  getAllVehicles() {
+    this.vehicleService.getVehicles().subscribe((data) => {
+      this.vehicles = data;
+    });
+  }
 
-  if (updatedVehicle.rentalPrice !== null) {
-    this.http.put(`http://localhost:8080/vehicles/${vehicle.id}`, updatedVehicle).subscribe({
-      next: (response) => {
-        alert("Vehicle updated successfully!");
-        this.getAllVehicles(); // Refresh data after update
+  showNotification(message: string, type: string) {
+    this.snackBar.open(message, 'Close', {
+      duration: 3000,
+      panelClass: type === 'success' ? 'snackbar-success' : 'snackbar-error'
+    });
+  }
+
+  deleteVehicle(vehicleId: number) {
+    this.http.delete(`http://localhost:8080/vehicles/${vehicleId}`, { responseType: 'text' }).subscribe({
+      next: () => {
+        this.showNotification("Vehicle deleted successfully", 'success');
+        this.vehicles = this.vehicles.filter(vehicle => vehicle.id !== vehicleId);
       },
-      error: (error) => {
-        console.error("Error updating vehicle:", error);
-        alert("Failed to update vehicle.");
+      error: () => {
+        this.showNotification("Failed to delete vehicle", 'error');
       }
     });
   }
-}
 
-    
+  editVehicle(vehicle: Vehicle) {
+    this.selectedVehicle = { ...vehicle }; // Clone to prevent direct mutation
+    this.showUpdateForm = true;
+  }
+
+  updateVehicle() {
+    if (!this.selectedVehicle) return;
+
+    this.http.put(`http://localhost:8080/vehicles/${this.selectedVehicle.id}`, this.selectedVehicle).subscribe({
+      next: () => {
+        this.showNotification("Vehicle updated successfully!", 'success');
+        this.getAllVehicles(); // Refresh data after update
+        this.cancelUpdate();
+      },
+      error: () => {
+        this.showNotification("Failed to update vehicle.", 'error');
+      }
+    });
+  }
+
+  cancelUpdate() {
+    this.showUpdateForm = false;
+    this.selectedVehicle = null;
+  }
 }
