@@ -3,18 +3,20 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./Main_App/header/header.component";
 import { FooterComponent } from "./Main_App/footer/footer.component";
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
+import { LoginComponent } from "./Main_App/login/login.component"; 
 
 @Component({
   selector: 'app-root',
   standalone:true,
   imports: [
-    RouterOutlet, 
-    CommonModule, 
+    RouterOutlet,
+    CommonModule,
     FormsModule,
-    HeaderComponent, 
-    FooterComponent
-  ],
+    HeaderComponent,
+    FooterComponent,
+    LoginComponent
+],
     templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

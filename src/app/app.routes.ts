@@ -5,7 +5,7 @@ export const routes: Routes = [
     // {path :'' , component : HomeComponent},
 
     {
-        path:'',
+        path:'home',
         loadComponent :()=>import('./Pages/home/home.component').then((c)=> c.HomeComponent),
     },
     {
@@ -25,7 +25,7 @@ export const routes: Routes = [
         loadComponent :()=>import('./Pages/gallery/gallery.component').then((c)=> c.GalleryComponent),
     },
     {
-        path:'login',
+        path:'',
         loadComponent :()=>import('./Main_App/login/login.component').then((c)=> c.LoginComponent),
     },
 
