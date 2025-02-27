@@ -46,27 +46,21 @@ export class AddVehicleComponent {
 
   onSubmit() {
     if (this.vehicleForm.valid) {
-      this.isUploading = true;  // Start upload indicator
       const vehicleData = { ...this.vehicleForm.value };
-
+  
       if (this.selectedFile) {
-        const formData = new FormData();
-        formData.append('file', this.selectedFile);
-        
-        this.http.post<{ message: string; fileUrl?: string }>('http://localhost:8080/vehicles/upload', formData).subscribe(
+        this.uploadImage(this.selectedFile).subscribe(
           (response) => {
             if (response.fileUrl) {
               vehicleData.imageUrl = response.fileUrl;
               this.saveVehicle(vehicleData);
             } else {
               alert('File uploaded but no URL received!');
-              this.isUploading = false;
             }
           },
           (error) => {
             console.error('Image Upload Error:', error);
             alert('Image upload failed!');
-            this.isUploading = false;
           }
         );
       } else {
@@ -74,7 +68,14 @@ export class AddVehicleComponent {
       }
     }
   }
-
+  
+  // Move image upload logic into a separate method
+  uploadImage(file: File) {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.http.post<{ message: string; fileUrl?: string }>('http://localhost:8080/vehicles/upload', formData);
+  }
+  
   saveVehicle(vehicleData: any) {
     this.http.post('http://localhost:8080/vehicles/add', vehicleData).subscribe(
       () => {
@@ -82,15 +83,30 @@ export class AddVehicleComponent {
         this.vehicleForm.reset();
         this.imagePreview = null;
         this.selectedFile = null;
-        this.isUploading = false;
       },
       (error) => {
         console.error('Error:', error);
         alert('Error adding vehicle!');
-        this.isUploading = false;
       }
     );
   }
+  
+  //   saveVehicle(vehicleData: any) {
+  //     console.log('Sending data:', vehicleData);
+  //     this.http.post('http://localhost:8080/vehicles/add', vehicleData).subscribe(
+  //       (response) => {
+  //         console.log('Server Response:', response);
+  //         alert('Vehicle added successfully!');
+  //         this.vehicleForm.reset();
+  //       },
+  //       (error) => {
+  //         console.error('Error:', error);
+  //         alert('Error adding vehicle!');
+  //       }
+  //     );
+  // }
+
+
 
   uploadFile(file: File) {
     const formData = new FormData();
