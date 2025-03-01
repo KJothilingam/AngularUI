@@ -78,12 +78,13 @@ html, body {
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
+    gap: 10px;  
 }
 
 .price-tag {
     background: #ffcc00;
     border: none;
-    padding: 8px 12px;
+    padding: 8px 12px 3px 3px ;
     font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
@@ -128,6 +129,7 @@ html, body {
     font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .delete-btn {
@@ -169,13 +171,6 @@ html, body {
     font-size: 18px;
     margin-bottom: 10px;
 } 
-  /* .update-form input, .update-form select {
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  } */
   .update-form input,
 .update-form select {
     width: 100%;
@@ -185,17 +180,6 @@ html, body {
     border: 1px solid #ccc;
     font-size: 14px;
 }
-
-  
-  /* .form-buttons {
-    display: flex;
-    justify-content: space-between;
-  } */
-  /* .form-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-} */
 .form-buttons {
     display: flex;
     justify-content: space-between;
@@ -216,20 +200,6 @@ button {
     background: #b52b3a;
 }
 
-  
-  /* .cancel-btn {
-    background: #dc3545;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .cancel-btn:hover {
-    background: #b52b3a;
-  }
-   */
   .snackbar-success {
     background-color: #28a745 !important;
     color: white;
@@ -240,3 +210,73 @@ button {
     color: white;
   }
   
+  .update-form {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  text-align: left;
+  z-index: 1000;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  width: 40%;
+  font-weight: bold;
+  text-align: left;
+}
+
+.form-group input, 
+.form-group select {
+  width: 55%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.update-btn, .cancel-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.update-btn {
+  background-color: #3cc1ff;
+  color: black;
+  margin-right: 10px;
+}
+
+.cancel-btn {
+  background-color: #d32f2f;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background: #b52b3a;
+}

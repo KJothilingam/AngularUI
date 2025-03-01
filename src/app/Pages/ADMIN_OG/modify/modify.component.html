@@ -25,8 +25,58 @@
   </div>
 </section>
 
-<!-- 🚀 Update Form (Hidden Initially) -->
 <div class="update-form" *ngIf="showUpdateForm">
+  <h2>Update Vehicle</h2>
+
+  <form (submit)="updateVehicle()" class="form-container">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" [(ngModel)]="selectedVehicle!.name" name="name">
+    </div>
+
+    <div class="form-group">
+      <label for="numberPlate">Number Plate:</label>
+      <input type="text" id="numberPlate" [(ngModel)]="selectedVehicle!.numberPlate" name="numberPlate">
+    </div>
+
+    <div class="form-group">
+      <label for="rentalPrice">Rental Price:</label>
+      <input type="number" id="rentalPrice" [(ngModel)]="selectedVehicle!.rentalPrice" name="rentalPrice">
+    </div>
+
+    <div class="form-group">
+      <label for="totalKms">Total KMs Driven:</label>
+      <input type="number" id="totalKms" [(ngModel)]="selectedVehicle!.totalKmsDriven" name="totalKmsDriven">
+    </div>
+
+    <div class="form-group">
+      <label for="type">Type:</label>
+      <input type="text" id="type" [(ngModel)]="selectedVehicle!.type" name="type">
+    </div>
+
+    <div class="form-group">
+      <label for="needsService">Needs Service:</label>
+      <select id="needsService" [(ngModel)]="selectedVehicle!.needsService" name="needsService">
+        <option [value]="true">Yes</option>
+        <option [value]="false">No</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="imageUrl">Image URL:</label>
+      <input type="text" id="imageUrl" [(ngModel)]="selectedVehicle!.imageUrl" name="imageUrl">
+    </div>
+
+    <div class="form-buttons">
+      <button type="submit" class="update-btn">Save</button>
+      <button type="button" class="cancel-btn" (click)="cancelUpdate()">Cancel</button>
+    </div>
+  </form>
+</div>
+
+
+<!-- 🚀 Update Form (Hidden Initially) -->
+<!-- <div class="update-form" *ngIf="showUpdateForm">
   <h2>Update Vehicle</h2>
   <label>Name: <input type="text" [(ngModel)]="selectedVehicle!.name"></label>
   <label>Number Plate: <input type="text" [(ngModel)]="selectedVehicle!.numberPlate"></label>
@@ -45,4 +95,4 @@
     <button (click)="updateVehicle()">Save</button>
     <button class="cancel-btn" (click)="cancelUpdate()">Cancel</button>
   </div>
-</div>
+</div> -->
