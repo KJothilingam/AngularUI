@@ -8,6 +8,7 @@ import { NavBarComponent } from "../nav-bar/nav-bar.component";
 import { GalleryComponent } from "../../../Main_App/gallery/gallery.component";
 import { VehicleComponent } from "../../../Main_App/vehicle/vehicle.component";
 import { AboutComponent } from "../../../Main_App/about/about.component";
+import { UserListComponent } from "../user-list/user-list.component";
 
 
 @Component({
@@ -16,7 +17,7 @@ import { AboutComponent } from "../../../Main_App/about/about.component";
     AddVehicleComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent, NavBarComponent, RouterModule, GalleryComponent, VehicleComponent, AboutComponent],
+    FooterComponent, NavBarComponent, RouterModule, GalleryComponent, VehicleComponent, AboutComponent, UserListComponent],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })

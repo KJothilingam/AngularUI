@@ -1,0 +1,93 @@
+.user-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  /* background-color: black; */
+}
+.user-section{
+  text-align: center;
+  /* padding: 55px; */
+  padding-top: 100px;
+  background: hsl(0, 1%, 29%);
+  color: white;
+  background: url('../../../../../public/Imgs/windows-11-dark-mode-blue-stock-official-3840x2160-5630.jpg') 
+  no-repeat center center/cover;
+
+}
+.profile-pic img {
+  max-width: 100%;
+  max-height: 150px; /* Adjust based on your UI */
+}
+
+
+.user-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+  width: 280px;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  transition: 0.3s ease-in-out;
+  color: black; /* Change text color to black */
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Change profile picture from circle to rectangle */
+.profile-pic {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  background: #f0f0f0; /* Light background */
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px; /* Make it slightly rounded like vehicle images */
+}
+
+.user-info {
+  font-size: 16px;
+  font-weight: bold;
+  color: black; /* Ensure text color is black */
+}
+
+.button-container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.update-btn, .delete-btn {
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.update-btn {
+  background-color: #fbc02d;
+  color: black;
+}
+
+.update-btn:hover {
+  background-color: #e0a800;
+}
+
+.delete-btn {
+  background-color: #d32f2f;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #b71c1c;
+}

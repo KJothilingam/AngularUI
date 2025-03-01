@@ -1,0 +1,35 @@
+<app-nav-bar></app-nav-bar>
+<section class="user-section">
+  <h2>Registered Users</h2>
+  <div class="user-container">
+      <!-- <div class="user-card" *ngFor="let user of users()"> -->
+        <div class="user-card" *ngFor="let user of users(); trackBy: trackByUserId">
+
+          <!-- Profile Picture Placeholder -->
+          <div class="profile-pic">
+            <!-- <img *ngIf="user.imageUrl" [src]="user.imageUrl" width="150" height="150" alt="User Image" loading="lazy"> -->
+
+              <img *ngIf="user.imageUrl" [src]="user.imageUrl" alt="User Image" style="width: 100%; height: 100%; border-radius: 50%;">
+          </div>
+          
+          <div class="user-info">
+              <p>Name: {{ user.userName }}</p>
+              <p>ID: {{ user.userId }}</p>
+              <!-- <p>Address: {{ user.address }}</p> -->
+              <p>Phone No: {{ user.phoneNo }}</p>
+              <p>Security Deposit: ₹{{ user.securityDeposit }}</p>
+          </div>
+          <div *ngIf="users().length === 0">
+            <p>No users found. Please check API connection.</p>
+        </div>
+
+        
+        
+          
+          <div class="button-container">
+              <button class="update-btn" (click)="editUser(user)">Update</button>
+              <button class="delete-btn" (click)="deleteUser(user.userId)">Delete</button>
+          </div>
+      </div>
+  </div>
+</section>

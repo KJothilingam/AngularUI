@@ -50,5 +50,15 @@ export const routes: Routes = [
         loadComponent: () => import('./Pages/ADMIN_OG/modify/modify.component').then((c) => c.ModifyComponent)
 
     },
+    {
+        path: 'renters',
+        loadComponent: () => import('./Pages/ADMIN_OG/user-list/user-list.component').then((c) => c.UserListComponent)
+
+    },
+    // {
+    //     path: 'users',
+    //     loadComponent: () => import('./Pages/User_OG/user-list/user-list.component').then((c) => c.UserListComponent)
+
+    // },
 
 ];
