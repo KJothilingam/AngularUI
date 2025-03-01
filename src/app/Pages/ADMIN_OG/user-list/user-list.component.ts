@@ -37,18 +37,22 @@ export class UserListComponent {
       }
     });
   }
-  
 
+  // editUser(user: User) {
+  //   this.selectedUser = { ...user };
+  //   this.showUpdateForm = true;
+  // }
   editUser(user: User) {
     this.selectedUser = { ...user };
-    this.showUpdateForm = true;
+    this.showUpdateForm = true;  // Make form visible
   }
+  
 
   updateUser() {
     if (this.selectedUser) {
       this.http.put(`http://localhost:8080/update/${this.selectedUser.userId}`, this.selectedUser).subscribe({
         next: () => {
-          this.showUpdateForm = false;
+          this.showUpdateForm = false; // Hide form after update
           this.fetchUsers();
           this.snackBar.open('User updated successfully!', 'Close', { duration: 3000 });
         },
@@ -59,12 +63,17 @@ export class UserListComponent {
     }
   }
   
+  cancelUpdate() {
+    this.showUpdateForm = false;
+    this.selectedUser = null;
+  }
+
   deleteUser(userId: number) {
-    if (confirm('Are you sure you want to delete this user?')) { // Confirmation before deleting
+    if (confirm('Are you sure you want to delete this user?')) {
       this.http.delete(`${this.apiUrl}delete/${userId}`, { responseType: 'text' }).subscribe({
         next: () => {
           this.fetchUsers();
-          alert('User deleted successfully!'); // Alert message after deletion
+          alert('User deleted successfully!');
         },
         error: (error) => {
           console.error('Delete error:', error);
@@ -73,13 +82,4 @@ export class UserListComponent {
       });
     }
   }
-  
-  
-  
-  cancelUpdate() {
-    this.showUpdateForm = false;
-    this.selectedUser = null;
-  }
-
-  
 }
