@@ -1,0 +1,26 @@
+<section class="all">
+    <app-user-nav></app-user-nav>
+  <div class="vehicle-container">
+      <div class="vehicle-card" *ngFor="let vehicle of vehicles">
+          <!-- Vehicle Image -->
+          <img [src]="vehicle.imageUrl" alt="{{ vehicle.name }}" class="vehicle-image"/>
+
+          <!-- Vehicle Details -->
+          <div class="vehicle-details">
+              <h3>{{ vehicle.name }}</h3>
+              <p><strong>Number Plate:</strong> {{ vehicle.numberPlate }}</p>
+              <p><strong>Vehicle ID:</strong> {{ vehicle.vehicle_id }}</p>
+              <p><strong>Total KMs Driven:</strong> {{ vehicle.totalKmsDriven }}</p>
+              <p><strong>Type:</strong> {{ vehicle.type }}</p>
+
+              <div class="card-bottom">
+                  <!-- ✅ Rental Price Button (Right Side) -->
+                  <button class="price-tag">{{ vehicle.rentalPrice | currency:'INR' }}/Day</button>
+                  
+                  <!-- ✅ Add to Cart Button (Left Side) -->
+                  <button class="cart-btn" (click)="addToCart(vehicle)">🛒 Add to Cart</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

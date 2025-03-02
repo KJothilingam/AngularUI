@@ -55,9 +55,19 @@ export const routes: Routes = [
         loadComponent: () => import('./Pages/ADMIN_OG/user-list/user-list.component').then((c) => c.UserListComponent)
 
     },
+    {
+        path: 'user',
+        loadComponent: () => import('./Pages/User_OG/user/user.component').then((c) => c.UserComponent)
+
+    },
+    {
+        path: 'vehiclelist',
+        loadComponent: () => import('./Pages/User_OG/vehicle-list/vehicle-list.component').then((c) => c.VehicleListComponent)
+
+    },
     // {
-    //     path: 'users',
-    //     loadComponent: () => import('./Pages/User_OG/user-list/user-list.component').then((c) => c.UserListComponent)
+    //     path: 'usercart',
+    //     loadComponent: () => import('./Pages/User_OG/cart/cart.component').then((c) => c.CartComponent)
 
     // },
 
