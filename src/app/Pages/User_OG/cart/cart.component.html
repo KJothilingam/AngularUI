@@ -13,13 +13,19 @@
               <p><strong>Total KMs Driven:</strong> {{ vehicle.totalKmsDriven }}</p>
               <p><strong>Type:</strong> {{ vehicle.type }}</p>
 
-              <div class="card-bottom">
+              <!-- <div class="card-bottom"> -->
                   <!-- ✅ Rental Price Button (Right Side) -->
-                  <button class="price-tag">{{ vehicle.rentalPrice | currency:'INR' }}/Day</button>
-                  
+                  <!-- <button class="price-tag">{{ vehicle.rentalPrice | currency:'INR' }}/Day</button> -->
                   <!-- ✅ Add to Cart Button (Left Side) -->
-                  <button class="cart-btn" (click)="removeFromCart(vehicle.id)">🛒 Remove</button>
-              </div>
+                  <!-- <button class="cart-btn" (click)="removeFromCart(vehicle.id)">🛒 Remove</button> -->
+              <!-- </div> -->
+               
+              <div class="card-bottom">
+                <button class="price-tag">{{ vehicle.rentalPrice | currency:'INR' }}/Day</button>
+                <button class="cart-btn" (click)="rentVehicle(vehicle.id)">Rent Now</button>
+                <button class="cart-btn" (click)="removeFromCart(vehicle.id)">🛒 Remove</button>
+            </div>
+            
           </div>
       </div>
   </div>

@@ -8,6 +8,7 @@ import { Vehicle } from '../Interface/vehicle.component';
 })
 export class CartService {
   private baseUrl = 'http://localhost:8080/cart';
+  private rentalUrl = 'http://localhost:8080/rentals';  // ✅ Corrected base URL for rentals
 
   constructor(private http: HttpClient) {}
 
@@ -18,18 +19,23 @@ export class CartService {
     return this.http.post(`${this.baseUrl}/add`, {}, { params, responseType: 'text' });
   }
 
-  // private baseUrl2 = 'http://localhost:8080/cart';
-
-  // constructor(private http: HttpClient) {}
-
   getCartItems(userId: number): Observable<Vehicle[]> {
     return this.http.get<Vehicle[]>(`${this.baseUrl}/user/${userId}`);
   }
 
- // cart-service.service.ts
-removeFromCart(userId: number, vehicleId: number): Observable<any> {
-  return this.http.delete(`${this.baseUrl}/remove?userId=${userId}&vehicleId=${vehicleId}`, { responseType: 'text' });
-}
+  removeFromCart(userId: number, vehicleId: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/remove?userId=${userId}&vehicleId=${vehicleId}`, { responseType: 'text' });
+  }
+
+  // ✅ FIXED URL to match backend API
+  // rentVehicle(userId: number, vehicleId: number): Observable<string> {
+  //   return this.http.post<string>(`${this.rentalUrl}/rent/${vehicleId}?userId=${userId}`, {});
+  // }
+  rentVehicle(userId: number, vehicleId: number): Observable<string> {
+    return this.http.post(`${this.rentalUrl}/rent/${vehicleId}?userId=${userId}`, {}, { responseType: 'text' });
+  }
+  
+  
 
 
 }

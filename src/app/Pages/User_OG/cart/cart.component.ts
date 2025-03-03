@@ -66,4 +66,23 @@ export class CartComponent implements OnInit {
     }
 
 
+    rentVehicle(vehicleId: number) {
+      const userId = this.authService.getUserId();
+      if (!userId) {
+        alert('Please log in to rent a vehicle.');
+        return;
+      }
+    
+      this.cartService.rentVehicle(userId, vehicleId).subscribe(
+        (response: string) => {
+          alert(response);
+          this.vehicles = this.vehicles.filter(v => v.id !== vehicleId); // Remove rented vehicle
+        },
+        (error) => {
+          console.error('Error renting vehicle:', error);
+        }
+      );
+    }
+    
+
 }
