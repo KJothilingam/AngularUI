@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { VehicleComponent } from '../vehicle/vehicle.component';
 import { AboutComponent } from '../about/about.component';
-import { GalleryComponent } from '../gallery/gallery.component';
+import { GalleryComponent } from '../../Pages/ADMIN_OG/gallery/gallery.component';
 import { RouterLink } from '@angular/router';
 
 @Component({

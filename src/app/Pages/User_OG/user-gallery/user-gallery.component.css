@@ -1,0 +1,49 @@
+/* Video Section */
+
+
+.video-section {
+    text-align: center;
+    padding: 55px;
+    background: #000;
+    color: white;
+}
+
+.video-section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* Media Slider (For both Video & Image) */
+.media-slider {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 20px 0;
+}
+
+/* Style for Videos & Images */
+.media-slider video,
+.media-slider img {
+    width: 400px; /* Same size */
+    height: 250px; /* Same size */
+    border-radius: 10px;
+    object-fit: cover;
+    scroll-snap-align: center;
+}
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    overflow: hidden;
+    text-align: center;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(75%);
+}

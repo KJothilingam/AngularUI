@@ -5,6 +5,9 @@ import { FooterComponent } from "./Main_App/footer/footer.component";
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from "./Pages/login/login.component"; 
+import { UserNavComponent } from './Pages/User_OG/user-nav/user-nav.component';
+import { NavBarComponent } from './Pages/ADMIN_OG/nav-bar/nav-bar.component';
+import { AuthService } from './service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +16,7 @@ import { LoginComponent } from "./Pages/login/login.component";
     RouterOutlet,
     CommonModule,
     FormsModule,
-    FooterComponent,
+    FooterComponent,UserNavComponent,NavBarComponent
 ],
     templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -21,9 +24,10 @@ import { LoginComponent } from "./Pages/login/login.component";
 export class AppComponent {
   title = 'Angular_UI';
 
-constructor(){
+constructor(public authService: AuthService){
   console.log("constructor");
 }
+// constructor() {}
 
 ngOnInit(){
   console.log("ngoninit");

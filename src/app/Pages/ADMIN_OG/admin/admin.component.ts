@@ -5,7 +5,7 @@ import { HomeComponent } from "../../../Main_App/home/home.component";
 import { HeaderComponent } from "../../../header/header.component";
 import { FooterComponent } from "../../../Main_App/footer/footer.component";
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
-import { GalleryComponent } from "../../../Main_App/gallery/gallery.component";
+import { GalleryComponent } from "../gallery/gallery.component";
 import { VehicleComponent } from "../../../Main_App/vehicle/vehicle.component";
 import { AboutComponent } from "../../../Main_App/about/about.component";
 import { UserListComponent } from "../user-list/user-list.component";

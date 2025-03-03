@@ -3,13 +3,15 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
+import { UserNavComponent } from "../../User_OG/user-nav/user-nav.component";
+import { NavBarComponent } from "../nav-bar/nav-bar.component";
 
 @Component({
   selector: 'app-add-vehicle',
   standalone: true,
   templateUrl: './add-vehicle.component.html',
   styleUrls: ['./add-vehicle.component.css'],
-  imports: [HttpClientModule, CommonModule, ReactiveFormsModule,RouterModule ,RouterLink]
+  imports: [HttpClientModule, CommonModule, ReactiveFormsModule, RouterModule, RouterLink, UserNavComponent, NavBarComponent]
 })
 export class AddVehicleComponent {
   vehicleForm: FormGroup;

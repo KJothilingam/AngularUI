@@ -24,7 +24,7 @@ export const routes: Routes = [
     },
     {
         path:'gallery',
-        loadComponent :()=>import('./Main_App/gallery/gallery.component').then((c)=> c.GalleryComponent),
+        loadComponent :()=>import('./Pages/ADMIN_OG/gallery/gallery.component').then((c)=> c.GalleryComponent),
     },
     {
         path:'',
@@ -73,6 +73,11 @@ export const routes: Routes = [
     {
         path: 'orders',
         loadComponent: () => import('./Pages/User_OG/order/order.component').then((c) => c.OrderComponent)
+
+    },
+    {
+        path: 'usergallery',
+        loadComponent: () => import('./Pages/User_OG/user-gallery/user-gallery.component').then((c) => c.UserGalleryComponent)
 
     },
 
