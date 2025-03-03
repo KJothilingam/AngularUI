@@ -70,5 +70,10 @@ export const routes: Routes = [
         loadComponent: () => import('./Pages/User_OG/cart/cart.component').then((c) => c.CartComponent)
 
     },
+    {
+        path: 'orders',
+        loadComponent: () => import('./Pages/User_OG/order/order.component').then((c) => c.OrderComponent)
+
+    },
 
 ];
