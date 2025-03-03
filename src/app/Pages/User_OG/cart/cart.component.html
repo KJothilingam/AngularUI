@@ -19,7 +19,7 @@
                   <!-- ✅ Add to Cart Button (Left Side) -->
                   <!-- <button class="cart-btn" (click)="removeFromCart(vehicle.id)">🛒 Remove</button> -->
               <!-- </div> -->
-               
+
               <div class="card-bottom">
                 <button class="price-tag">{{ vehicle.rentalPrice | currency:'INR' }}/Day</button>
                 <button class="cart-btn" (click)="rentVehicle(vehicle.id)">Rent Now</button>
@@ -29,4 +29,5 @@
           </div>
       </div>
   </div>
+  <app-footer></app-footer>
 </section>

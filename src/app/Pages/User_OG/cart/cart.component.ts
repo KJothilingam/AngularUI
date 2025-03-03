@@ -4,10 +4,11 @@ import { AuthService } from '../../../service/auth.service';
 import { Vehicle } from '../../../Interface/vehicle.component';
 import { CommonModule } from '@angular/common';
 import { UserNavComponent } from "../user-nav/user-nav.component";
+import { FooterComponent } from "../../../Main_App/footer/footer.component";
 
 @Component({
   selector: 'app-cart',
-  imports: [CommonModule, UserNavComponent],
+  imports: [CommonModule, UserNavComponent, FooterComponent],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
