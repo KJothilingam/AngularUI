@@ -65,10 +65,10 @@ export const routes: Routes = [
         loadComponent: () => import('./Pages/User_OG/vehicle-list/vehicle-list.component').then((c) => c.VehicleListComponent)
 
     },
-    // {
-    //     path: 'usercart',
-    //     loadComponent: () => import('./Pages/User_OG/cart/cart.component').then((c) => c.CartComponent)
+    {
+        path: 'cart',
+        loadComponent: () => import('./Pages/User_OG/cart/cart.component').then((c) => c.CartComponent)
 
-    // },
+    },
 
 ];
