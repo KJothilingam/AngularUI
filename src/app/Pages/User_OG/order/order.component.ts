@@ -48,9 +48,9 @@ export class OrderComponent {
       this.selectedOrder.id, parseInt(kmsDriven), damageLevel, paidByCash
     ).subscribe(
       (response: any) => {
-        alert(response); // ✅ Show success message
-        this.selectedOrder.isReturned = true; // ✅ Update UI
-        this.showReturnModal = false; // ✅ Close the pop-up after return
+        alert(response); 
+        this.selectedOrder.isReturned = true;
+        this.showReturnModal = false; 
       },
       (error) => {
         console.error("Error returning vehicle:", error);
@@ -60,7 +60,6 @@ export class OrderComponent {
 }
 
 
-  /** ✅ Extend Rental */
   extendRental(order: any) {
     this.rentalService.extendRental(order.id).subscribe(
       (response: any) => {

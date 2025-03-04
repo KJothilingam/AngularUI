@@ -51,7 +51,7 @@ export class ModifyComponent {
   }
 
   editVehicle(vehicle: Vehicle) {
-    this.selectedVehicle = { ...vehicle }; // Clone to prevent direct mutation
+    this.selectedVehicle = { ...vehicle }; 
     this.showUpdateForm = true;
   }
 
@@ -61,7 +61,7 @@ export class ModifyComponent {
     this.http.put(`http://localhost:8080/vehicles/${this.selectedVehicle.id}`, this.selectedVehicle).subscribe({
       next: () => {
         this.showNotification("Vehicle updated successfully!", 'success');
-        this.getAllVehicles(); // Refresh data after update
+        this.getAllVehicles(); 
         this.cancelUpdate();
       },
       error: () => {

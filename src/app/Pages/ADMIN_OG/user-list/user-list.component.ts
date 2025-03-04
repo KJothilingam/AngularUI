@@ -44,7 +44,7 @@ export class UserListComponent {
   // }
   editUser(user: User) {
     this.selectedUser = { ...user };
-    this.showUpdateForm = true;  // Make form visible
+    this.showUpdateForm = true;  
   }
   
 
@@ -52,7 +52,7 @@ export class UserListComponent {
     if (this.selectedUser) {
       this.http.put(`http://localhost:8080/update/${this.selectedUser.userId}`, this.selectedUser).subscribe({
         next: () => {
-          this.showUpdateForm = false; // Hide form after update
+          this.showUpdateForm = false; 
           this.fetchUsers();
           this.snackBar.open('User updated successfully!', 'Close', { duration: 3000 });
         },

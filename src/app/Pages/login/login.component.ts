@@ -159,10 +159,12 @@ export class LoginComponent {
         console.log("User Name:", this.authService.getUserName());
         console.log("User Role:", this.authService.getUserRole());
         console.log("Is Logged In:", this.authService.isLoggedIn());
-  
+        
         if (response.role === 'ADMIN') {
+          console.log("admin");
           this.router.navigate(['/admin']);
         } else if (response.role === 'RENTER') {
+          console.log("user");
           this.router.navigate(['/user']);
         } 
       } else {

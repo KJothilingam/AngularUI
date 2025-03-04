@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { VehicleService } from '../../../service/vehicle.service';
 import { Vehicle } from '../../../Interface/vehicle.component';
 import { AuthService } from '../../../service/auth.service'; 
-// import { CartService } from '../../../service/cart.service'; // ✅ Properly imported
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../../service/cart-service.service';
 import { UserNavComponent } from "../user-nav/user-nav.component";
@@ -20,12 +19,12 @@ export class VehicleListComponent {
   constructor(
     private vehicleService: VehicleService,
     private authService: AuthService, 
-    private cartService: CartService // ✅ Injected properly
+    private cartService: CartService 
   ) {}
 
   ngOnInit(): void {
     this.getAllVehicles();
-    this.userName = this.authService.getUserName(); // ✅ Fetch logged-in user name
+    this.userName = this.authService.getUserName(); 
   }
 
   getAllVehicles() {
@@ -41,7 +40,7 @@ export class VehicleListComponent {
       return;
     }
   
-    const userId = this.authService.getUserId(); // ✅ Get userId
+    const userId = this.authService.getUserId(); 
   
     if (!userId || userId === 0) {
       alert('User ID not found. Please log in again.');

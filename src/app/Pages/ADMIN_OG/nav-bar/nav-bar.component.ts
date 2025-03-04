@@ -18,7 +18,7 @@ export class NavBarComponent {
   logout() {
     console.log("Current Role:", this.authService.getUserRole()); 
     console.log("Is Logged In:", this.authService.isLoggedIn());
-    this.authService.logout(); // ✅ Clear login state
-    this.router.navigate(['/']); // ✅ Redirect to login page
+    this.authService.logout(); 
+    this.router.navigate(['/']); 
   }
 }

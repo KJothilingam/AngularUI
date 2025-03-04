@@ -92,23 +92,6 @@ export class AddVehicleComponent {
       }
     );
   }
-  
-  //   saveVehicle(vehicleData: any) {
-  //     console.log('Sending data:', vehicleData);
-  //     this.http.post('http://localhost:8080/vehicles/add', vehicleData).subscribe(
-  //       (response) => {
-  //         console.log('Server Response:', response);
-  //         alert('Vehicle added successfully!');
-  //         this.vehicleForm.reset();
-  //       },
-  //       (error) => {
-  //         console.error('Error:', error);
-  //         alert('Error adding vehicle!');
-  //       }
-  //     );
-  // }
-
-
 
   uploadFile(file: File) {
     const formData = new FormData();

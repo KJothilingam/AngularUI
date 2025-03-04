@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./Main_App/footer/footer.component";
 import { CommonModule } from '@angular/common';
@@ -14,6 +14,7 @@ import { AuthService } from './service/auth.service';
   standalone:true,
   imports: [
     RouterOutlet,
+    RouterModule,
     CommonModule,
     FormsModule,
     FooterComponent,UserNavComponent,NavBarComponent
@@ -44,7 +45,4 @@ onSubmit(action: string) {
   console.log(`${action.toUpperCase()} form submitted:`, this.user);
 }
 
-// changeTitle(){
-//   this.title="Tittle-changed";
-// }
 }
