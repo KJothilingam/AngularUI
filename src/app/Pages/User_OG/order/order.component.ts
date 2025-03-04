@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { UserNavComponent } from '../user-nav/user-nav.component';
 import { RentalService } from '../../../service/rental.service';
 import { FooterComponent } from "../../../Main_App/footer/footer.component";
+import { AuthService } from '../../../service/auth.service';
 
 @Component({
   selector: 'app-order',
   standalone: true,
-  imports: [CommonModule, FormsModule, UserNavComponent, FooterComponent],
+  imports: [CommonModule, FormsModule, UserNavComponent],
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.css']
 })
@@ -19,18 +20,27 @@ export class OrderComponent {
   showReturnModal: boolean = false;
   returnDetails = { kmsDriven: '', damageLevel: 'NONE', paidByCash: true };
 
-  constructor(private http: HttpClient, private rentalService: RentalService) {}
+  constructor(private http: HttpClient, private rentalService: RentalService, private authService: AuthService) {}
 
   /** ✅ Load Orders */
   ngOnInit(): void {
     this.loadOrders();
   }
 
+  // loadOrders() {
+  //   this.http.get<any[]>('http://localhost:8080/orders').subscribe(data => {
+  //     this.orders = data;
+  //   });
+  // }
   loadOrders() {
-    this.http.get<any[]>('http://localhost:8080/orders').subscribe(data => {
+    const userId = this.authService.getUserId(); // Get logged-in user ID
+    if (!userId) return; // Ensure user is logged in
+  
+    this.rentalService.getUserRentalsID(userId).subscribe(data => {
       this.orders = data;
     });
   }
+  
 
   /** ✅ Open Return Form */
   openReturnForm(order: any) {

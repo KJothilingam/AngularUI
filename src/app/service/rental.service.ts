@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class RentalService {
   private baseUrl = 'http://localhost:8080/rentals'; // Update with your actual backend URL
+  private baseUrl2 = 'http://localhost:8080/orders'; // Update with your actual backend URL
 
   constructor(private http: HttpClient) {}
 
@@ -24,6 +25,12 @@ export class RentalService {
   }
   getAllRentals(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/all`);
+  }
+  getUserRentals(userId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/${userId}`);
+  }
+  getUserRentalsID(userId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl2}/user/${userId}`);
   }
   
   
