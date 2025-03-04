@@ -1,0 +1,14 @@
+<app-user-nav></app-user-nav>
+<section class="all">
+
+    <div class="profile-card" *ngIf="user">
+        <img [src]="user?.imageUrl || 'assets/default-profile.png'" alt="User Image" class="profile-img">
+    <div class="user-info">
+        <p><strong>User Id :</strong> {{ user?.userId }}</p>
+        <p><strong>User Name :</strong> {{ user?.userName }}</p>
+        <p><strong>Balance :</strong> {{ user?.securityDeposit }}</p>
+        <p><strong>Phone No :</strong> {{ user?.phoneNo }}</p>
+        <p><strong>Email :</strong> {{ user?.email }}</p>
+    </div>
+</div>
+    </section>

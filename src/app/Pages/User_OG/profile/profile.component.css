@@ -1,0 +1,36 @@
+
+
+.all {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    width: 100%;
+    height: 100vh;
+    background: url('../../../../../public/Imgs/anime-moon-landscape.jpg') no-repeat center center/cover;
+}
+
+.profile-card {
+    width: 300px;
+    background-color: #F6E79B; /* Light Yellow */
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: 'Georgia', serif;
+}
+
+.profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: white;
+    display: block;
+    margin: 0 auto 15px;
+}
+
+.user-info p {
+    margin: 5px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}

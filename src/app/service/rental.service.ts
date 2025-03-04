@@ -22,6 +22,9 @@ export class RentalService {
   
     return this.http.put<string>(`http://localhost:8080/rentals/return/${rentalId}`, null, { params });
   }
+  getAllRentals(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/all`);
+  }
   
   
 }

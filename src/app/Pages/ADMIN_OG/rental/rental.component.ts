@@ -1,13 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RentalService } from '../../../service/rental.service';
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
-import { FooterComponent } from "../../../Main_App/footer/footer.component";
+import { CommonModule } from '@angular/common';
+// import { RentalService } from '../services/rental.service';
 
 @Component({
   selector: 'app-rental',
-  imports: [NavBarComponent, FooterComponent],
   templateUrl: './rental.component.html',
-  styleUrl: './rental.component.css'
+  styleUrls: ['./rental.component.css'],
+  imports: [NavBarComponent,CommonModule],
 })
-export class RentalComponent {
+export class RentalComponent implements OnInit {
+  rentals: any[] = [];
 
+  constructor(private rentalService: RentalService) {}
+
+  ngOnInit(): void {
+    this.loadRentals();
+  }
+
+  loadRentals(): void {
+    this.rentalService.getAllRentals().subscribe(data => {
+      this.rentals = data;
+    });
+  }
 }

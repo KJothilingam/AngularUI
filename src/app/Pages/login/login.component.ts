@@ -99,6 +99,44 @@ export class LoginComponent {
   //   });
   // }
 
+  // login(): void {
+  //   console.log("Email:", this.email());
+  //   console.log("Password:", this.password());
+  
+  //   if (!this.email() || !this.password()) {
+  //     alert("Please enter email and password!");
+  //     return;
+  //   }
+  
+  //   this.http.post<{ authenticated: boolean, role: string, userName: string, userId: number }>(
+  //     'http://localhost:8080/login',
+  //     null,
+  //     { params: { email: this.email(), password: this.password() } }
+  //   ).subscribe(response => {
+  //     if (response.authenticated) {
+  //       // ✅ Pass all four values (status, role, userName, userId)
+  //       this.authService.setLoginStatus(true, response.role, response.userName, response.userId);
+  
+  //       // ✅ Log details in console
+  //       console.log("Login Successful!");
+  //       console.log("User ID:", this.authService.getUserId()); // ✅ Now this method exists
+  //       console.log("User Name:", this.authService.getUserName());
+  //       console.log("User Role:", this.authService.getUserRole());
+  //       console.log("Is Logged In:", this.authService.isLoggedIn());
+  
+  //       if (response.role === 'ADMIN') {
+  //         this.router.navigate(['/admin']);
+  //       } else if (response.role === 'RENTER') {
+  //         this.router.navigate(['/user']);
+  //       } 
+  //     } else {
+  //       alert("Invalid email or password!");
+  //     }
+  //   }, error => {
+  //     alert("Login failed. Please try again.");
+  //     console.error(error);
+  //   });
+  // }
   login(): void {
     console.log("Email:", this.email());
     console.log("Password:", this.password());
@@ -114,12 +152,10 @@ export class LoginComponent {
       { params: { email: this.email(), password: this.password() } }
     ).subscribe(response => {
       if (response.authenticated) {
-        // ✅ Pass all four values (status, role, userName, userId)
         this.authService.setLoginStatus(true, response.role, response.userName, response.userId);
   
-        // ✅ Log details in console
         console.log("Login Successful!");
-        console.log("User ID:", this.authService.getUserId()); // ✅ Now this method exists
+        console.log("User ID:", this.authService.getUserId());
         console.log("User Name:", this.authService.getUserName());
         console.log("User Role:", this.authService.getUserRole());
         console.log("Is Logged In:", this.authService.isLoggedIn());
@@ -137,6 +173,7 @@ export class LoginComponent {
       console.error(error);
     });
   }
+  
   
 
   register(): void {

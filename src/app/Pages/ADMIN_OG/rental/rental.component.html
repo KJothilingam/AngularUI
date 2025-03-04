@@ -1,7 +1,42 @@
 <section class="allsection">
     <app-nav-bar></app-nav-bar>
-   <div class="main-content">
+    <div class="main-content">
+        <div class="rental-container">
+            <h2 class="h">Rental History</h2>
+            <div *ngFor="let rental of rentals" class="rental-card">
+                <!-- Vehicle Image (Larger) -->
+                <div class="vehicle-img">
+                    <img [src]="rental.vehicle.imageUrl" alt="{{ rental.vehicle.name }}" class="large-img"/>
+                </div>
 
-   </div>
+                <!-- Vehicle Info -->
+                <div class="vehicle-info">
+                    <h3>{{ rental.vehicle.name }}</h3>
+                    <p><strong>Type:</strong> {{ rental.vehicle.type }}</p>
+                    <p>
+                        <strong>Returned :</strong> 
+                        <span [ngStyle]="{ 'color': rental.isReturned ? 'green' : 'red', 'font-weight': 'bold' }">
+                            {{ rental.isReturned ? 'Yes' : 'No' }}
+                        </span>
+                    </p>
+                    <p><strong>Rental Date:</strong> {{ rental.rentalDate }}</p>
+                    <p><strong>Return Date:</strong> {{ rental.returnDate }}</p>
+                    <p><strong>Fine Amount:</strong> ₹{{ rental.fineAmount }}</p>
+                </div>
+
+                <!-- Borrower Info -->
+                <div class="user-info">
+                    <h4>Rented By:</h4>
+                    <p><strong>ID:</strong> {{ rental.borrower.userId }}</p>
+                    <p><strong>Name:</strong> {{ rental.borrower.userName }}</p>
+                    <p><strong>Email:</strong> {{ rental.borrower.email }}</p>
+                </div>
+
+                <!-- Borrower Image (Larger) -->
+                <div class="vehicle-img">
+                    <img [src]="rental.borrower.imageUrl" alt="{{ rental.borrower.userName }}" class="large-img"/>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
-<!-- <app-footer></app-footer> -->

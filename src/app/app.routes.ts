@@ -1,14 +1,9 @@
 import { CanActivateFn, Routes } from '@angular/router';
 import { AuthService } from './service/auth.service';
 import { inject } from '@angular/core';
-
-// const authGuard: CanActivateFn = () => {
-//     const authService = inject(AuthService);
-//     return authService.isLoggedIn();
-//   };
+import { access } from 'fs';
 
 export const routes: Routes = [
-    // {path :'' , component : HomeComponent},
 
     {
         path:'home',
@@ -26,10 +21,13 @@ export const routes: Routes = [
         path:'gallery',
         loadComponent :()=>import('./Pages/ADMIN_OG/gallery/gallery.component').then((c)=> c.GalleryComponent),
     },
+    //common
     {
         path:'',
         loadComponent :()=>import('./Pages/login/login.component').then((c)=> c.LoginComponent),
     },
+
+    // onlyadmin can access
     {
         path: 'addVehicle',
         loadComponent: () => import('./Pages/ADMIN_OG/add-vehicle/add-vehicle.component').then((c) => c.AddVehicleComponent)
@@ -55,6 +53,10 @@ export const routes: Routes = [
         loadComponent: () => import('./Pages/ADMIN_OG/user-list/user-list.component').then((c) => c.UserListComponent)
 
     },
+
+
+
+    // only user can access
     {
         path: 'user',
         loadComponent: () => import('./Pages/User_OG/user/user.component').then((c) => c.UserComponent)
@@ -78,6 +80,11 @@ export const routes: Routes = [
     {
         path: 'usergallery',
         loadComponent: () => import('./Pages/User_OG/user-gallery/user-gallery.component').then((c) => c.UserGalleryComponent)
+
+    },
+    {
+        path: 'profile',
+        loadComponent: () => import('./Pages/User_OG/profile/profile.component').then((c) => c.ProfileComponent)
 
     },
 

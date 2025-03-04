@@ -1,13 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from '../Interface/user.component';
 
-export interface User {
-  userId: number;
-  userName: string;
-  phoneNo: string;
-  securityDeposit: number;
-}
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +18,20 @@ export class UserService {
   getRenters(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}/renters`);
   }
+
+  // getUserById(userId: number): Observable<User> {
+  //   return this.http.get<User>(`${this.apiUrl}/id/${userId}`);
+  // }
+  // getUserById(userId: number): Observable<User> {
+  //   const url = `${this.apiUrl}id/${userId}`;
+  //   console.log('Fetching User from:', url); // 🔴 Debug: Check API URL
+  //   return this.http.get<User>(url);
+  // }
+  getUserById(userId: number): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}id/${userId}`);
+  }
+  
+  
 
   updateUser(userId: number, updatedUser: User): Observable<User> {
     return this.http.put<User>(`${this.apiUrl}/${userId}`, updatedUser);
