@@ -8,7 +8,7 @@ import { FooterComponent } from "../../../Main_App/footer/footer.component";
 
 @Component({
   selector: 'app-cart',
-  imports: [CommonModule, UserNavComponent, FooterComponent],
+  imports: [CommonModule, UserNavComponent, ],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })

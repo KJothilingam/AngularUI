@@ -14,11 +14,7 @@ import { ModifyComponent } from "../modify/modify.component";
 
 @Component({
   selector: 'app-admin',
-  imports: [RouterOutlet,
-    AddVehicleComponent,
-    HomeComponent,
-    HeaderComponent,
-    FooterComponent, NavBarComponent, RouterModule, GalleryComponent, VehicleComponent, AboutComponent, UserListComponent, ModifyComponent],
+  imports: [NavBarComponent, RouterModule,],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })

@@ -6,23 +6,7 @@ import { AuthService } from '../../service/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-// export class AuthService {
-//   private loggedIn = signal(false);
-//   private userRole = signal('');
 
-//   setLoginStatus(status: boolean, role: string) {
-//     this.loggedIn.set(status);
-//     this.userRole.set(role);
-//   }
-
-//   isLoggedIn() {
-//     return this.loggedIn();
-//   }
-
-//   getUserRole() {
-//     return this.userRole();
-//   }
-// }
 
 @Component({
   selector: 'app-login',
@@ -66,77 +50,6 @@ export class LoginComponent {
     this.securityDeposit.set(Number(inputElement.value));
   }
 
-  // login(): void {
-  //   console.log("Email:", this.email());
-  //   console.log("Password:", this.password());
-
-  //   if (!this.email() || !this.password()) {
-  //     alert("Please enter email and password!");
-  //     return;
-  //   }
-
-  //   this.http.post<{ authenticated: boolean, role: string }>('http://localhost:8080/login', null, {
-  //     params: { email: this.email(), password: this.password() }
-  //   }).subscribe(response => {
-  //     if (response.authenticated) {
-  //       this.authService.setLoginStatus(true, response.role);
-
-  //     // ✅ Log role and status in console
-  //     console.log("Login Successful!");
-  //     console.log("User Role:", this.authService.getUserRole());
-  //     console.log("Is Logged In:", this.authService.isLoggedIn());
-  //       if (response.role === 'ADMIN') {
-  //         this.router.navigate(['/admin']);
-  //       } else if (response.role === 'RENTER') {
-  //         this.router.navigate(['/user']);
-  //       } 
-  //     } else {
-  //       alert("Invalid email or password!");
-  //     }
-  //   }, error => {
-  //     alert("Login failed. Please try again.");
-  //     console.error(error);
-  //   });
-  // }
-
-  // login(): void {
-  //   console.log("Email:", this.email());
-  //   console.log("Password:", this.password());
-  
-  //   if (!this.email() || !this.password()) {
-  //     alert("Please enter email and password!");
-  //     return;
-  //   }
-  
-  //   this.http.post<{ authenticated: boolean, role: string, userName: string, userId: number }>(
-  //     'http://localhost:8080/login',
-  //     null,
-  //     { params: { email: this.email(), password: this.password() } }
-  //   ).subscribe(response => {
-  //     if (response.authenticated) {
-  //       // ✅ Pass all four values (status, role, userName, userId)
-  //       this.authService.setLoginStatus(true, response.role, response.userName, response.userId);
-  
-  //       // ✅ Log details in console
-  //       console.log("Login Successful!");
-  //       console.log("User ID:", this.authService.getUserId()); // ✅ Now this method exists
-  //       console.log("User Name:", this.authService.getUserName());
-  //       console.log("User Role:", this.authService.getUserRole());
-  //       console.log("Is Logged In:", this.authService.isLoggedIn());
-  
-  //       if (response.role === 'ADMIN') {
-  //         this.router.navigate(['/admin']);
-  //       } else if (response.role === 'RENTER') {
-  //         this.router.navigate(['/user']);
-  //       } 
-  //     } else {
-  //       alert("Invalid email or password!");
-  //     }
-  //   }, error => {
-  //     alert("Login failed. Please try again.");
-  //     console.error(error);
-  //   });
-  // }
   login(): void {
     console.log("Email:", this.email());
     console.log("Password:", this.password());

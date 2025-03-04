@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterModule } from '@angular/router';
-import { UserNavComponent } from "../../User_OG/user-nav/user-nav.component";
+import { RouterModule } from '@angular/router';
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
 
 @Component({
@@ -11,7 +10,7 @@ import { NavBarComponent } from "../nav-bar/nav-bar.component";
   standalone: true,
   templateUrl: './add-vehicle.component.html',
   styleUrls: ['./add-vehicle.component.css'],
-  imports: [HttpClientModule, CommonModule, ReactiveFormsModule, RouterModule, RouterLink, UserNavComponent, NavBarComponent]
+  imports: [HttpClientModule, CommonModule, ReactiveFormsModule, RouterModule, NavBarComponent]
 })
 export class AddVehicleComponent {
   vehicleForm: FormGroup;

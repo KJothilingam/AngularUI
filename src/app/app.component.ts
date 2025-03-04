@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./Main_App/footer/footer.component";
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LoginComponent } from "./Pages/login/login.component"; 
-import { UserNavComponent } from './Pages/User_OG/user-nav/user-nav.component';
-import { NavBarComponent } from './Pages/ADMIN_OG/nav-bar/nav-bar.component';
 import { AuthService } from './service/auth.service';
 
 @Component({
@@ -17,7 +13,7 @@ import { AuthService } from './service/auth.service';
     RouterModule,
     CommonModule,
     FormsModule,
-    FooterComponent,UserNavComponent,NavBarComponent
+    FooterComponent,
 ],
     templateUrl: './app.component.html',
   styleUrl: './app.component.css'
