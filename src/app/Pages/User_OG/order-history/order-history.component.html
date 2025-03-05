@@ -1,0 +1,24 @@
+<app-user-nav></app-user-nav>
+<section class="all">
+    <div class="main">
+        <div *ngFor="let order of orders" class="order-card">
+            <div class="vehicle-info">
+                <img [src]="order.vehicle.imageUrl" alt="Vehicle Image">
+                <h3>{{ order.vehicle.name }}</h3>
+                <p>Number Plate: {{ order.vehicle.numberPlate }}</p>
+                <p>Vehicle ID: {{ order.vehicle.id }}</p>
+                <p>Total KMs Driven: {{ order.vehicle.totalKmsDriven }}</p>
+                <p>Type: {{ order.vehicle.type }}</p>
+            </div>
+
+            <div class="rental-info">
+                <p><b>Rental Date:</b> {{ order.rentalDate | date }}</p>
+                <p><b>Extension Done:</b> {{ order.extensionCount }}</p>
+                <p><b>Cost Per Day:</b> ₹{{ order.vehicle.rentalPrice }}</p>
+                <!-- <p><b>Returned:</b> {{ order.isReturned ? 'Yes' : 'No' }}</p> -->
+                <p><b>Return Date:</b> {{ order.returnDate | date }}</p>
+
+            </div>
+        </div>
+    </div>
+</section>

@@ -33,6 +33,10 @@ export class RentalService {
   getUserRentalsID(userId: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl2}/user/${userId}`);
   }
+
+  getUserHistory(userId: number): Observable<any[]>{
+    return this.http.get<any[]>(`${this.baseUrl2}/history/${userId}`);
+  }
  
   
   

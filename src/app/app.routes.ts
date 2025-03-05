@@ -104,6 +104,13 @@ export const routes: Routes = [
             data: { role: 'RENTER' } 
     
         },
+        {
+            path: 'history',
+            loadComponent: () => import('./Pages/User_OG/order-history/order-history.component').then((c) => c.OrderHistoryComponent),
+            canActivate: [AuthGuard], 
+            data: { role: 'RENTER' } 
+    
+        },
     
     // Redirect unknown routes
     { path: '**', redirectTo: '' }

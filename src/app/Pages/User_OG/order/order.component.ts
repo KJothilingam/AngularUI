@@ -28,11 +28,6 @@ export class OrderComponent {
     this.loadOrders();
   }
 
-  // loadOrders() {
-  //   this.http.get<any[]>('http://localhost:8080/orders').subscribe(data => {
-  //     this.orders = data;
-  //   });
-  // }
   loadOrders() {
     const userId = this.authService.getUserId(); // Get logged-in user ID
     if (!userId) return; // Ensure user is logged in
@@ -49,81 +44,34 @@ export class OrderComponent {
     this.showReturnModal = true;
   }
 
-  /** ✅ Submit Vehicle Return */
-//   submitReturn() {
-//     if (!this.selectedOrder) return;
+    submitReturn() {
+      if (!this.selectedOrder) return;
 
-//     const { kmsDriven, damageLevel, paidByCash } = this.returnDetails;
-    
-//     this.rentalService.returnVehicle(
-//       this.selectedOrder.id, parseInt(kmsDriven), damageLevel, paidByCash
-//     ).subscribe(
-//       (response: any) => {
-//         alert(response); 
-//         this.selectedOrder.isReturned = true;
-//         this.showReturnModal = false; 
-//       },
-//       (error) => {
-//         console.error("Error returning vehicle:", error);
-//         alert(error?.error?.text || "Failed to return vehicle!");
-//       }
-//     );
-// }
-// submitReturn() {
-//   if (!this.selectedOrder) return;
+      const { kmsDriven, damageLevel, paidByCash } = this.returnDetails;
 
-//   const { kmsDriven, damageLevel, paidByCash } = this.returnDetails;
+      this.rentalService.returnVehicle(
+        this.selectedOrder.id, parseInt(kmsDriven), damageLevel, paidByCash
+      ).subscribe(
+        (response: any) => {
+          alert(response);
+          this.showReturnModal = false;
 
-//   this.rentalService.returnVehicle(
-//     this.selectedOrder.id, parseInt(kmsDriven), damageLevel, paidByCash
-//   ).subscribe(
-//     (response: any) => {
-//       alert(response);
+          // ✅ Update the returned order in the array
+          this.orders = this.orders.map(order => 
+            order.id === this.selectedOrder.id ? { ...order, isReturned: true } : order
+          );
+          
+          this.cdr.detectChanges(); // ✅ Force UI update
 
-//       // ✅ Update the order as returned with a new reference
-//       this.selectedOrder.isReturned = true;
-//       this.selectedOrder = Object.assign({}, this.selectedOrder); // Create new object reference
-
-//       // ✅ Hide modal after return
-//       this.showReturnModal = false;
-
-//       // ✅ Force UI refresh
-//       this.cdr.detectChanges();
-//     },
-//     (error) => {
-//       console.error("Error returning vehicle:", error);
-//       alert(error?.error?.text || "Failed to return vehicle!");
-//     }
-//   );
-// }
-submitReturn() {
-  if (!this.selectedOrder) return;
-
-  const { kmsDriven, damageLevel, paidByCash } = this.returnDetails;
-
-  this.rentalService.returnVehicle(
-    this.selectedOrder.id, parseInt(kmsDriven), damageLevel, paidByCash
-  ).subscribe(
-    (response: any) => {
-      alert(response);
-
-      // ✅ Update the returned order in the array
-      this.orders = this.orders.map(order => 
-        order.id === this.selectedOrder.id ? { ...order, isReturned: true } : order
+          // ✅ Redirect properly using Angular Router
+          // this.router.navigate(['/orders']);
+        },
+        (error) => {
+          console.error("Error returning vehicle:", error);
+          alert(error?.error?.text || "Failed to return vehicle!");
+        }
       );
-
-      this.showReturnModal = false;
-      this.cdr.detectChanges(); // ✅ Force UI update
-
-      // ✅ Redirect properly using Angular Router
-      this.router.navigate(['/orders']);
-    },
-    (error) => {
-      console.error("Error returning vehicle:", error);
-      alert(error?.error?.text || "Failed to return vehicle!");
     }
-  );
-}
 
   extendRental(order: any) {
     this.rentalService.extendRental(order.id).subscribe(
