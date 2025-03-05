@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
 
 @Component({
@@ -18,18 +18,20 @@ export class AddVehicleComponent {
   selectedFile: File | null = null;
   isUploading: boolean = false;  // Added for upload status
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
+   
     this.vehicleForm = this.fb.group({
       name: ['', Validators.required],
       numberPlate: ['', Validators.required],
       type: ['CAR', Validators.required],
-      availableCount: [1, [Validators.required, Validators.min(1)]],
+      available: [true, Validators.required],  // Changed from availableCount to available (boolean)
       rentalPrice: [1000, Validators.required],
       totalKmsDriven: [0, Validators.required],
       needsService: ['false', Validators.required],
       lastServiceAt: [0, Validators.required],
       imageUrl: ['']
     });
+    
   }
 
   onFileSelected(event: any) {
@@ -84,6 +86,7 @@ export class AddVehicleComponent {
         this.vehicleForm.reset();
         this.imagePreview = null;
         this.selectedFile = null;
+        this.router.navigate(['/modify']); 
       },
       (error) => {
         console.error('Error:', error);

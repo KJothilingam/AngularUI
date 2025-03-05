@@ -34,11 +34,20 @@
           </div>
   
           <!-- Available Count -->
-          <div class="col-md-6">
+          <!-- <div class="col-md-6">
             <label class="form-label">Available Count:</label>
             <input type="number" class="form-control" formControlName="availableCount">
+          </div> -->
+          <!-- Available -->
+          <div class="col-md-6">
+            <label class="form-label">Available:</label>
+            <select class="form-select" formControlName="available">
+              <option [value]="true">Yes</option>
+              <option [value]="false">No</option>
+            </select>
           </div>
         </div>
+
   
         <div class="row mt-3">
           <!-- Rental Price -->
@@ -82,7 +91,7 @@
   
         <!-- Submit Button -->
         <div class="text-center mt-4">
-          <button type="submit" class="btn btn-primary px-4" [disabled]="vehicleForm.invalid">
+          <button type="submit" class="btn btn-primary px-4" [disabled]="vehicleForm.invalid" >
             <i class="fas fa-save"></i> Add Vehicle
           </button>
         </div>

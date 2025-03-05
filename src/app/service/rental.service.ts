@@ -26,12 +26,14 @@ export class RentalService {
   getAllRentals(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/all`);
   }
+  
   getUserRentals(userId: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/${userId}`);
   }
   getUserRentalsID(userId: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl2}/user/${userId}`);
   }
+ 
   
   
 }

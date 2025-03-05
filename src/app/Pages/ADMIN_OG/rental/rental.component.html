@@ -15,9 +15,13 @@
                     <p><strong>Type:</strong> {{ rental.vehicle.type }}</p>
                     <p>
                         <strong>Returned :</strong> 
-                        <span [ngStyle]="{ 'color': rental.isReturned ? 'green' : 'red', 'font-weight': 'bold' }">
+                        <!-- <span [ngStyle]="{ 'color': rental.isReturned ? 'green' : 'red', 'font-weight': 'bold' }">
                             {{ rental.isReturned ? 'Yes' : 'No' }}
+                        </span> -->
+                        <span [ngStyle]="{ 'color': rental.returned ? 'green' : 'red', 'font-weight': 'bold' }">
+                            {{ rental.returned ? 'Yes' : 'No' }}
                         </span>
+                        
                     </p>
                     <p><strong>Rental Date:</strong> {{ rental.rentalDate }}</p>
                     <p><strong>Return Date:</strong> {{ rental.returnDate }}</p>

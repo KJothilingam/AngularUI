@@ -1,13 +1,14 @@
 
-.all {
+.all{
+    flex: 1;
     display: flex;
-    /* justify-content: center; */
-    /* align-items: center;  */
-    width: 100%;
-    height: 100vh;
+    flex-direction: column;
+    min-height: 100vh; 
+    padding-top: 10vh;
+    padding-bottom: 10vh;
     background: url('../../../../../public/Imgs/bugatti-chiron-pur-5120x2880-21342.jpg') no-repeat center center/cover;
-    /* background: url('../../../../../public/Imgs/anime-moon-landscape.jpg') no-repeat center center/cover; */
-}
+  }
+  
 h2 {
     font-size: 32px;
     margin-bottom: 20px;
@@ -44,43 +45,13 @@ footer {
 
 .vehicle-container {
     display: flex;
-    flex-wrap: wrap; /* Ensures items move to the next line when needed */
+    flex-wrap: wrap;
     gap: 20px;
-    justify-content: center; /* Align items to the center */
-    align-items: flex-start; /* Align items at the top */
+    justify-content: center;
+    align-items: stretch; /* ✅ Ensures all cards stretch to the same height */
     padding: 100px;
 }
 
-/* .vehicle-card {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 25px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease-in-out;
-} */
-
-/* .vehicle-card:hover {
-    transform: scale(1.05);
-}
-
-.vehicle-image {
-    width: 100%;
-    border-radius: 8px;
-}
-
-.vehicle-details {
-    padding: 5px;
-} */
-
-/* .price-tag {
-    background: #ffcc00;
-    border: none;
-    padding: 8px 12px;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-} */
 
 .vehicle-card {
     background: #ffffff;
@@ -105,13 +76,6 @@ footer {
     padding: 5px;
 }
 
-/* ✅ New: Align buttons at the bottom */
-/* .card-bottom {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    margin-top: 15px;
-} */
 .card-bottom {
     display: flex;
     justify-content: space-evenly; /* Adjusted to evenly space buttons */
@@ -121,7 +85,6 @@ footer {
 }
 
 
-/* ✅ Cart Button Styling */
 .cart-btn {
     background: #ff4081;  /* Pink Shade */
     color: white;

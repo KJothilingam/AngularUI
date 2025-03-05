@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UserNavComponent } from '../user-nav/user-nav.component';
 import { RentalService } from '../../../service/rental.service';
-import { FooterComponent } from "../../../Main_App/footer/footer.component";
 import { AuthService } from '../../../service/auth.service';
+import { ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -20,7 +21,7 @@ export class OrderComponent {
   showReturnModal: boolean = false;
   returnDetails = { kmsDriven: '', damageLevel: 'NONE', paidByCash: true };
 
-  constructor(private http: HttpClient, private rentalService: RentalService, private authService: AuthService) {}
+  constructor( private router: Router,private http: HttpClient, private rentalService: RentalService, private authService: AuthService,private cdr: ChangeDetectorRef) {}
 
   /** ✅ Load Orders */
   ngOnInit(): void {
@@ -49,26 +50,80 @@ export class OrderComponent {
   }
 
   /** ✅ Submit Vehicle Return */
-  submitReturn() {
-    if (!this.selectedOrder) return;
+//   submitReturn() {
+//     if (!this.selectedOrder) return;
 
-    const { kmsDriven, damageLevel, paidByCash } = this.returnDetails;
+//     const { kmsDriven, damageLevel, paidByCash } = this.returnDetails;
     
-    this.rentalService.returnVehicle(
-      this.selectedOrder.id, parseInt(kmsDriven), damageLevel, paidByCash
-    ).subscribe(
-      (response: any) => {
-        alert(response); 
-        this.selectedOrder.isReturned = true;
-        this.showReturnModal = false; 
-      },
-      (error) => {
-        console.error("Error returning vehicle:", error);
-        alert(error?.error?.text || "Failed to return vehicle!");
-      }
-    );
-}
+//     this.rentalService.returnVehicle(
+//       this.selectedOrder.id, parseInt(kmsDriven), damageLevel, paidByCash
+//     ).subscribe(
+//       (response: any) => {
+//         alert(response); 
+//         this.selectedOrder.isReturned = true;
+//         this.showReturnModal = false; 
+//       },
+//       (error) => {
+//         console.error("Error returning vehicle:", error);
+//         alert(error?.error?.text || "Failed to return vehicle!");
+//       }
+//     );
+// }
+// submitReturn() {
+//   if (!this.selectedOrder) return;
 
+//   const { kmsDriven, damageLevel, paidByCash } = this.returnDetails;
+
+//   this.rentalService.returnVehicle(
+//     this.selectedOrder.id, parseInt(kmsDriven), damageLevel, paidByCash
+//   ).subscribe(
+//     (response: any) => {
+//       alert(response);
+
+//       // ✅ Update the order as returned with a new reference
+//       this.selectedOrder.isReturned = true;
+//       this.selectedOrder = Object.assign({}, this.selectedOrder); // Create new object reference
+
+//       // ✅ Hide modal after return
+//       this.showReturnModal = false;
+
+//       // ✅ Force UI refresh
+//       this.cdr.detectChanges();
+//     },
+//     (error) => {
+//       console.error("Error returning vehicle:", error);
+//       alert(error?.error?.text || "Failed to return vehicle!");
+//     }
+//   );
+// }
+submitReturn() {
+  if (!this.selectedOrder) return;
+
+  const { kmsDriven, damageLevel, paidByCash } = this.returnDetails;
+
+  this.rentalService.returnVehicle(
+    this.selectedOrder.id, parseInt(kmsDriven), damageLevel, paidByCash
+  ).subscribe(
+    (response: any) => {
+      alert(response);
+
+      // ✅ Update the returned order in the array
+      this.orders = this.orders.map(order => 
+        order.id === this.selectedOrder.id ? { ...order, isReturned: true } : order
+      );
+
+      this.showReturnModal = false;
+      this.cdr.detectChanges(); // ✅ Force UI update
+
+      // ✅ Redirect properly using Angular Router
+      this.router.navigate(['/orders']);
+    },
+    (error) => {
+      console.error("Error returning vehicle:", error);
+      alert(error?.error?.text || "Failed to return vehicle!");
+    }
+  );
+}
 
   extendRental(order: any) {
     this.rentalService.extendRental(order.id).subscribe(

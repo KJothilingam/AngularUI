@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'; // ✅ Import FormsModule for ngModel
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-modify',
   standalone: true,
-  imports: [CommonModule, NavBarComponent, FormsModule, MatSnackBarModule], // ✅ Import FormsModule
+  imports: [CommonModule, NavBarComponent, FormsModule, MatSnackBarModule,RouterLink], // ✅ Import FormsModule
   templateUrl: './modify.component.html',
   styleUrl: './modify.component.css'
 })
@@ -38,17 +39,32 @@ export class ModifyComponent {
     });
   }
 
+  // deleteVehicle(vehicleId: number) {
+  //   this.http.delete(`http://localhost:8080/vehicles/${vehicleId}`, { responseType: 'text' }).subscribe({
+  //     next: () => {
+  //       this.showNotification("Vehicle deleted successfully", 'success');
+  //       this.vehicles = this.vehicles.filter(vehicle => vehicle.id !== vehicleId);
+  //     },
+  //     error: () => {
+  //       this.showNotification("Failed to delete vehicle", 'error');
+  //     }
+  //   });
+  // }
+  
   deleteVehicle(vehicleId: number) {
+  if (confirm("Are you sure you want to delete this vehicle?")) { 
     this.http.delete(`http://localhost:8080/vehicles/${vehicleId}`, { responseType: 'text' }).subscribe({
       next: () => {
-        this.showNotification("Vehicle deleted successfully", 'success');
+        alert("Vehicle deleted successfully!");
         this.vehicles = this.vehicles.filter(vehicle => vehicle.id !== vehicleId);
       },
-      error: () => {
-        this.showNotification("Failed to delete vehicle", 'error');
+      error: (err) => {
+        alert(err.error || "Failed to delete vehicle! It may have active rentals.");
       }
     });
   }
+}
+
 
   editVehicle(vehicle: Vehicle) {
     this.selectedVehicle = { ...vehicle }; 
@@ -74,4 +90,6 @@ export class ModifyComponent {
     this.showUpdateForm = false;
     this.selectedVehicle = null;
   }
+
+  
 }

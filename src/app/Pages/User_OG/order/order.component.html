@@ -18,6 +18,9 @@
                 <p><b>Returned:</b> {{ order.isReturned ? 'Yes' : 'No' }}</p>
                 <p><b>Return Date:</b> {{ order.returnDate | date }}</p>
 
+
+        
+                
                 <div class="button-container">
                     <button (click)="extendRental(order)" class="extend-btn">Extend</button>
                     <button (click)="openReturnForm(order)" class="return-btn" [disabled]="order.isReturned">

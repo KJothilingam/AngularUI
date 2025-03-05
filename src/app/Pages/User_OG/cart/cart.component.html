@@ -9,20 +9,19 @@
           <div class="vehicle-details">
               <h3>{{ vehicle.name }}</h3>
               <p><strong>Number Plate:</strong> {{ vehicle.numberPlate }}</p>
-              <p><strong>Vehicle ID:</strong> {{ vehicle.id }}</p>
+              <!-- <p><strong>Vehicle ID:</strong> {{ vehicle.id }}</p> -->
               <p><strong>Total KMs Driven:</strong> {{ vehicle.totalKmsDriven }}</p>
               <p><strong>Type:</strong> {{ vehicle.type }}</p>
-
-              <!-- <div class="card-bottom"> -->
-                  <!-- ✅ Rental Price Button (Right Side) -->
-                  <!-- <button class="price-tag">{{ vehicle.rentalPrice | currency:'INR' }}/Day</button> -->
-                  <!-- ✅ Add to Cart Button (Left Side) -->
-                  <!-- <button class="cart-btn" (click)="removeFromCart(vehicle.id)">🛒 Remove</button> -->
-              <!-- </div> -->
+              <p>
+                <strong>Availability:</strong>
+                <span [ngClass]="{'text-success': vehicle.available, 'text-danger': !vehicle.available}">
+                  {{ vehicle.available ? 'Available' : 'Not Available' }}
+                </span>
+              </p>
 
               <div class="card-bottom">
                 <button class="price-tag">{{ vehicle.rentalPrice | currency:'INR' }}/Day</button>
-                <button class="cart-btn" (click)="rentVehicle(vehicle.id)">Rent Now</button>
+                <button class="cart-btn" (click)="rentVehicle(vehicle.id)" *ngIf="vehicle.available">Rent Now</button>
                 <button class="cart-btn" (click)="removeFromCart(vehicle.id)">🛒 Remove</button>
             </div>
             

@@ -78,8 +78,8 @@ export const routes: Routes = [
     },
     {
             path: 'vehiclelist',
-            loadComponent: () => import('./Pages/User_OG/vehicle-list/vehicle-list.component').then((c) => c.VehicleListComponent),
-            canActivate: [AuthGuard], 
+            loadComponent: () => import('./Pages/User_OG/vehicle-list/vehicle-list.component').then((c) => c.VehicleListComponent)
+            , canActivate: [AuthGuard], 
             data: { role: 'RENTER' } 
     
         },
