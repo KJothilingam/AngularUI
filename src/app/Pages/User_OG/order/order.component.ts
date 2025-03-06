@@ -85,24 +85,24 @@ export class OrderComponent {
 
 
   
-    
+      
 
-  extendRental(order: any) {
-    this.rentalService.extendRental(order.id).subscribe(
-      (response: any) => {
-        alert(response);
-        this.loadOrders();
-        if (!response.includes("limit reached") && !response.includes("Insufficient")) {
-          order.extensionCount += 1;
-          order.returnDate = new Date(new Date(order.returnDate).getTime() + 86400000);
+    extendRental(order: any) {
+      this.rentalService.extendRental(order.id).subscribe(
+        (response: any) => {
+          alert(response);
+          this.loadOrders();
+          if (!response.includes("limit reached") && !response.includes("Insufficient")) {
+            order.extensionCount += 1;
+            order.returnDate = new Date(new Date(order.returnDate).getTime() + 86400000);
+          }
+          this.router.navigate(['/orders']);
+          // this.ngOnInit();
+        },
+        (error) => {
+          console.error("Error extending rental:", error);
+          alert(error?.error?.text || "Failed to extend rental!");
         }
-        this.router.navigate(['/orders']);
-        // this.ngOnInit();
-      },
-      (error) => {
-        console.error("Error extending rental:", error);
-        alert(error?.error?.text || "Failed to extend rental!");
-      }
-    );
-  }
+      );
+    }
 }

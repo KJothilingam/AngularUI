@@ -50,28 +50,18 @@
                 <option value="HIGH">High</option>
             </select>
 
-            
-            <!-- ✅ Dropdown for Security Deposit Condition -->
-        <!-- <label for="payment">Payment Method:</label>
-        <select id="payment" [(ngModel)]="returnDetails.paymentMethod">
-            <option *ngIf="order.vehicle.securityDeposit && order.vehicle.rentalPrice < order.vehicle.securityDeposit" value="SECURITY_DEPOSIT">
-                Security Deposit
-            </option>
-            <option value="CREDIT_CARD">Credit Card</option>
-            <option value="CASH">Cash</option>
-        </select> -->
                 <label>Payment Method:</label>
-        <select id="payment" [(ngModel)]="returnDetails.paymentMethod">
-            <option value="SECURITY">Security Deposit</option>
-            <option value="CREDIT">Credit Card</option>
-            <option value="CASH">Cash</option>
-        </select>
+                <select id="payment" [(ngModel)]="returnDetails.paymentMethod">
+                    <option value="SECURITY">Security Deposit</option>
+                    <option value="CREDIT">Credit Card</option>
+                    <option value="CASH">Cash</option>
+                </select>
 
-        <div class="modal-buttons">
-            <button (click)="submitReturn()" class="confirm-btn">Confirm Return</button>
-            <button (click)="showReturnModal = false" class="cancel-btn">Cancel</button>
-        </div>
-    </div>
+                <div class="modal-buttons">
+                    <button (click)="submitReturn()" class="confirm-btn">Confirm Return</button>
+                    <button (click)="showReturnModal = false" class="cancel-btn">Cancel</button>
+                </div>
+            </div>
 </div>
 
     

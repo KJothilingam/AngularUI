@@ -28,9 +28,10 @@ export class ModifyComponent {
 
   getAllVehicles() {
     this.vehicleService.getVehicles().subscribe((data) => {
-      this.vehicles = data;
+      this.vehicles = data.sort((a, b) => b.id - a.id); // Sorting in descending order
     });
   }
+  
 
   showNotification(message: string, type: string) {
     this.snackBar.open(message, 'Close', {
@@ -79,3 +80,4 @@ export class ModifyComponent {
 
   
 }
+

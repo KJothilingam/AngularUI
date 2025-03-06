@@ -27,11 +27,17 @@ export class VehicleListComponent {
     this.userName = this.authService.getUserName(); 
   }
 
+  // getAllVehicles() {
+  //   this.vehicleService.getVehicles().subscribe((data) => {
+  //     this.vehicles = data;
+  //   });
+  // }
   getAllVehicles() {
     this.vehicleService.getVehicles().subscribe((data) => {
-      this.vehicles = data;
+      this.vehicles = data.sort((a, b) => b.id - a.id); 
     });
   }
+  
 
   // ✅ Add Vehicle to Cart (Fully Fixed)
   addToCart(vehicle: Vehicle) {

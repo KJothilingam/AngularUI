@@ -37,11 +37,7 @@ export class UserListComponent {
       }
     });
   }
-
-  // editUser(user: User) {
-  //   this.selectedUser = { ...user };
-  //   this.showUpdateForm = true;
-  // }
+  
   editUser(user: User) {
     this.selectedUser = { ...user };
     this.showUpdateForm = true;  

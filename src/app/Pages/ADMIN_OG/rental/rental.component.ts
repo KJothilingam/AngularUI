@@ -21,7 +21,13 @@ export class RentalComponent implements OnInit {
 
   loadRentals(): void {
     this.rentalService.getAllRentals().subscribe(data => {
-      this.rentals = data;
+      this.rentals = data.sort((a, b) => b.id - a.id); // Sort rentals in descending order
     });
   }
+  
+  // loadRentals(): void {
+  //   this.rentalService.getAllRentals().subscribe(data => {
+  //     this.rentals = data;
+  //   });
+  // }
 }
