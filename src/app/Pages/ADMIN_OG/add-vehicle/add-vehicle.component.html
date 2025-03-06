@@ -8,13 +8,26 @@
         
         <div class="row">
           <!-- Vehicle Name -->
-          <div class="col-md-6">
-            <label class="form-label">Vehicle Name:</label>
-            <input type="text" class="form-control" formControlName="name" placeholder="Enter Vehicle Name">
-            <small class="text-danger" *ngIf="vehicleForm.get('name')?.invalid && vehicleForm.get('name')?.touched">
-              Name is required!
-            </small>
-          </div>
+    <div class="col-md-6">
+      <label class="form-label">Vehicle Brand:</label>
+      <select class="form-select" formControlName="name">
+        <option value="" disabled selected>Select a brand</option>
+        <option value="Toyota">Toyota</option>
+        <option value="Honda">Honda</option>
+        <option value="Ford">Ford</option>
+        <option value="BMW">BMW</option>
+        <option value="Mercedes-Benz">Mercedes-Benz</option>
+        <option value="Hyundai">Hyundai</option>
+        <option value="Audi">Audi</option>
+        <option value="Volkswagen">Volkswagen</option>
+        <option value="Tesla">Tesla</option>
+        <option value="Nissan">Nissan</option>
+      </select>
+      <small class="text-danger" *ngIf="vehicleForm.get('name')?.invalid && vehicleForm.get('name')?.touched">
+        Vehicle brand is required!
+      </small>
+    </div>
+
   
           <!-- Number Plate -->
           <div class="col-md-6">
