@@ -54,8 +54,8 @@ export class ProfileComponent implements OnInit {
       (updatedData) => {
         alert('User Profile Updated Successfully:');
         console.log('User Profile Updated Successfully:', updatedData);
-        this.user = updatedData; // Update UI
-        this.isEditing = false; // Close edit form
+        this.user = updatedData; 
+        this.isEditing = false; 
       },
       (error) => {
         console.error('Error Updating Profile:', error);

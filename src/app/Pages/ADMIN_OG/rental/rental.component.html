@@ -12,7 +12,9 @@
                 <!-- Vehicle Info -->
                 <div class="vehicle-info">
                     <h3>{{ rental.vehicle.name }}</h3>
-                    <p><strong>Type:</strong> {{ rental.vehicle.type }}</p>
+                    <p *ngIf="rental.returned"><b>Total Cost:</b> <span class="highlight-green">&nbsp;&nbsp;₹{{ rental.totalCost }}</span></p>
+
+                    <!-- <p><b>Total Cost:</b> <span class="highlight-green">&nbsp;&nbsp;₹{{ rental.totalCost }}</span></p> -->
                     <p>
                         <strong>Returned :</strong> 
                         <!-- <span [ngStyle]="{ 'color': rental.isReturned ? 'green' : 'red', 'font-weight': 'bold' }">
@@ -24,9 +26,11 @@
                         
                     </p>
                     <p><strong>Rental Date:</strong> {{ rental.rentalDate }}</p>
+                    <p><strong>Type:</strong> {{ rental.vehicle.type }}</p>
                     <!-- <p><strong>Total:</strong> {{ rental.totalcost }}</p> -->
                     <p><strong>Return Date:</strong> {{ rental.returnDate }}</p>
                     <p><strong>Fine Amount:</strong> ₹{{ rental.fineAmount }}</p>
+
                 </div>
 
                 <!-- Borrower Info -->

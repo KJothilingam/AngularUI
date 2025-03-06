@@ -15,14 +15,31 @@ export class RentalService {
     let params = new HttpParams().set('rentalId', rentalId.toString());
     return this.http.post<string>(`${this.baseUrl}/extend`, null, { params });
   }
-  returnVehicle(rentalId: number, kmsDriven: number, damageLevel: string, paidByCash: boolean): Observable<string> {
+  // returnVehicle(rentalId: number, kmsDriven: number, damageLevel: string, paidByCash: boolean): Observable<string> {
+  //   let params = new HttpParams()
+  //     .set('kmsDriven', kmsDriven.toString())
+  //     .set('damageLevel', damageLevel)
+  //     .set('paidByCash', paidByCash.toString());
+  
+  //   return this.http.put<string>(`http://localhost:8080/rentals/return/${rentalId}`, null, { params });
+  // }
+
+  returnVehicle(orderId: number, kmsDriven: number, damageLevel: string, paymentMethod: string) {
     let params = new HttpParams()
       .set('kmsDriven', kmsDriven.toString())
       .set('damageLevel', damageLevel)
-      .set('paidByCash', paidByCash.toString());
+      .set('paymentMethod', paymentMethod);
   
-    return this.http.put<string>(`http://localhost:8080/rentals/return/${rentalId}`, null, { params });
+    return this.http.put(`${this.baseUrl}/return/${orderId}`, null, { params });
   }
+  
+  getUserSecurityDeposit(userId: number): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl2}/user/security-deposit/${userId}`);
+  }
+  
+  
+
+  
   getAllRentals(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/all`);
   }
