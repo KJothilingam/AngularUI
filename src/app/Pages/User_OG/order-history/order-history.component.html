@@ -17,8 +17,10 @@
                 <p><b>Rental Date:</b> {{ order.rentalDate | date }}</p>
                 <p><b>Extension Done:</b> {{ order.extensionCount }}</p>
                 <p><b>Cost Per Day:</b> ₹{{ order.vehicle.rentalPrice }}</p>
-                <!-- <p><b>Total Cost:</b> {{ order.totalcost }}</p> -->
                 <p><b>Return Date:</b> {{ order.returnDate | date }}</p>
+                <!-- <p><b>Total Cost:</b> ₹{{ order.totalCost }}</p>  -->
+                <p><b>Total Cost:</b> <span class="highlight-green">&nbsp;&nbsp;₹{{ order.totalCost }}</span></p>
+
 
             </div>
         </div>

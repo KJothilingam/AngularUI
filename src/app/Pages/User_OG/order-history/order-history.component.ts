@@ -17,7 +17,6 @@ export class OrderHistoryComponent {
   orders: any[] = [];
   constructor( private router: Router,private http: HttpClient, private rentalService: RentalService, private authService: AuthService) {}
 
-  /** ✅ Load Orders */
   ngOnInit(): void {
     this.OrderHistory();
   }
@@ -34,11 +33,6 @@ export class OrderHistoryComponent {
   }
 
 }
-  // selectedOrder: any = null;
-  // showReturnModal: boolean = false;
-  // returnDetails = { kmsDriven: '', damageLevel: 'NONE', paidByCash: true };
-
-  
 
  
   
