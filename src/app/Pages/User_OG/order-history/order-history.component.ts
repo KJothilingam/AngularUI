@@ -29,6 +29,8 @@ export class OrderHistoryComponent {
     this.rentalService.getUserHistory(userId).subscribe(data => {
       this.orders = data;
     });
+    console.log(this.orders);
+
   }
 
 }

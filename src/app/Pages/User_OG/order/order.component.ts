@@ -6,12 +6,12 @@ import { UserNavComponent } from '../user-nav/user-nav.component';
 import { RentalService } from '../../../service/rental.service';
 import { AuthService } from '../../../service/auth.service';
 import { ChangeDetectorRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-order',
   standalone: true,
-  imports: [CommonModule, FormsModule, UserNavComponent],
+  imports: [CommonModule, RouterLink,FormsModule, UserNavComponent],
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.css']
 })
@@ -54,17 +54,14 @@ export class OrderComponent {
       ).subscribe(
         (response: any) => {
           alert(response);
-          this.showReturnModal = false;
-
+          
           // ✅ Update the returned order in the array
           this.orders = this.orders.map(order => 
             order.id === this.selectedOrder.id ? { ...order, isReturned: true } : order
           );
-          
-          this.cdr.detectChanges(); // ✅ Force UI update
-
-          // ✅ Redirect properly using Angular Router
-          // this.router.navigate(['/orders']);
+          this.showReturnModal = false;
+          this.router.navigate(['/orders']);
+          this.cdr.detectChanges(); 
         },
         (error) => {
           console.error("Error returning vehicle:", error);
@@ -81,6 +78,7 @@ export class OrderComponent {
           order.extensionCount += 1;
           order.returnDate = new Date(new Date(order.returnDate).getTime() + 86400000);
         }
+        // this.loadOrders();
       },
       (error) => {
         console.error("Error extending rental:", error);
