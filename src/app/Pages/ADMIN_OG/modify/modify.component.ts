@@ -39,31 +39,17 @@ export class ModifyComponent {
     });
   }
 
-  // deleteVehicle(vehicleId: number) {
-  //   this.http.delete(`http://localhost:8080/vehicles/${vehicleId}`, { responseType: 'text' }).subscribe({
-  //     next: () => {
-  //       this.showNotification("Vehicle deleted successfully", 'success');
-  //       this.vehicles = this.vehicles.filter(vehicle => vehicle.id !== vehicleId);
-  //     },
-  //     error: () => {
-  //       this.showNotification("Failed to delete vehicle", 'error');
-  //     }
-  //   });
-  // }
-  
   deleteVehicle(vehicleId: number) {
-  if (confirm("Are you sure you want to delete this vehicle?")) { 
     this.http.delete(`http://localhost:8080/vehicles/${vehicleId}`, { responseType: 'text' }).subscribe({
       next: () => {
         alert("Vehicle deleted successfully!");
         this.vehicles = this.vehicles.filter(vehicle => vehicle.id !== vehicleId);
       },
-      error: (err) => {
-        alert(err.error || "Failed to delete vehicle! It may have active rentals.");
+      error: () => {
+        alert("Failed to delete vehicle! It may have active rentals.");
       }
     });
   }
-}
 
 
   editVehicle(vehicle: Vehicle) {
