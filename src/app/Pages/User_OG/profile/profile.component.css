@@ -1,5 +1,4 @@
 
-
 .all {
     display: flex;
     justify-content: center; /* Horizontally center */
@@ -33,4 +32,62 @@
     font-size: 16px;
     font-weight: bold;
     color: black;
+}
+.update-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.update-btn:hover {
+    background-color: #45a049;
+}
+
+.update-form {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.update-form input {
+    width: 90%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.confirm-btn {
+    background-color: #008CBA;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.confirm-btn:hover {
+    background-color: #007bb5;
+}
+
+.cancel-btn:hover {
+    background-color: darkred;
 }

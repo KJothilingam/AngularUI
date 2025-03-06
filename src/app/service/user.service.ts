@@ -9,6 +9,7 @@ import { User } from '../Interface/user.component';
   providedIn: 'root'
 })
 export class UserService {
+  
   // private apiUrl = 'http://localhost:8080/api/users';
   private apiUrl = 'http://localhost:8080/'; // Updated to match backend
 
@@ -18,26 +19,27 @@ export class UserService {
   getRenters(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}/renters`);
   }
-
-  // getUserById(userId: number): Observable<User> {
-  //   return this.http.get<User>(`${this.apiUrl}/id/${userId}`);
-  // }
-  // getUserById(userId: number): Observable<User> {
-  //   const url = `${this.apiUrl}id/${userId}`;
-  //   console.log('Fetching User from:', url); // 🔴 Debug: Check API URL
-  //   return this.http.get<User>(url);
-  // }
+  
   getUserById(userId: number): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}id/${userId}`);
   }
   
   
-
+  
   updateUser(userId: number, updatedUser: User): Observable<User> {
     return this.http.put<User>(`${this.apiUrl}/${userId}`, updatedUser);
+  }
+  
+  
+
+  updateUserProfile(userId: number, updatedUser: Partial<User>): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}profile/${userId}`, updatedUser);
   }
 
   deleteUser(userId: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${userId}`);
   }
+
+
+ 
 }

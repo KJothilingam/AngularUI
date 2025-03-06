@@ -1,15 +1,32 @@
 <app-user-nav></app-user-nav>
-<section class="all">
 
+<section class="all">
     <div class="profile-card" *ngIf="user">
         <img [src]="user.imageUrl || 'Img/jak.jpg'" alt="User Image" class="profile-img">
-        <!-- <img [src]="user.imageUrl || 'assets/default-profile.png'"> -->
-    <div class="user-info">
-        <p><strong>User Id :</strong> {{ user.userId }}</p>
-        <p><strong>User Name :</strong> {{ user.userName }}</p>
-        <p><strong>Balance :</strong> {{ user.securityDeposit }}</p>
-        <p><strong>Phone No :</strong> {{ user.phoneNo }}</p>
-        <p><strong>Email :</strong> {{ user.email }}</p>
+        
+        <div class="user-info">
+            <p><strong>User Id :</strong> {{ user.userId }}</p>
+            <p><strong>User Name :</strong> {{ user.userName }}</p>
+            <p><strong>Balance :</strong> {{ user.securityDeposit }}</p>
+            <p><strong>Phone No :</strong> {{ user.phoneNo }}</p>
+            <p><strong>Email :</strong> {{ user.email }}</p>
+        </div>
+
+        <!-- Update Profile Button -->
+        <button (click)="toggleEdit()" class="update-btn">Update Profile</button>
+        <!-- Edit Form (Shown Only When isEditing is true) -->
+        <div class="update-form" *ngIf="isEditing">
+            <input type="text" [(ngModel)]="updatedUser.userName" placeholder="Enter new name">
+            <input type="text" [(ngModel)]="updatedUser.phoneNo" placeholder="Enter new phone number">
+            <input type="email" [(ngModel)]="updatedUser.email" placeholder="Enter new email">
+            
+            <div class="form-buttons">
+                <button (click)="updatedUserProfile()" class="confirm-btn">Confirm Update</button>
+                <button (click)="cancelEdit()" class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+        
     </div>
-</div>
-    </section>
+</section>
+
+
