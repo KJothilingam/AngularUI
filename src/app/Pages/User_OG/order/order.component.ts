@@ -90,25 +90,48 @@ export class OrderComponent {
   
       
 
+    // extendRental(order: any) {
+    //   this.rentalService.extendRental(order.id).subscribe(
+    //     (response: any) => {
+    //       alert(response);
+    //       // console
+    //       console.log(response);
+    //       this.loadOrders();
+    //       if (!response.includes("limit reached") && !response.includes("Insufficient")) {
+    //         order.extensionCount += 1;
+    //         order.returnDate = new Date(new Date(order.returnDate).getTime() + 86400000);
+    //       }
+    //       this.showReturnModal = false; 
+    //       this.selectedOrder = null;   
+    //       this.cdr.detectChanges(); 
+    //     },
+    //     (error) => {
+    //       console.error("Error extending rental:", error);
+    //       alert(error?.error?.text || "Failed to extend rental!");
+    //     }
+    //   );
+    // }
+
     extendRental(order: any) {
       this.rentalService.extendRental(order.id).subscribe(
-        (response: any) => {
-          alert(response);
-          // console
-          console.log(response);
-          this.loadOrders();
-          if (!response.includes("limit reached") && !response.includes("Insufficient")) {
-            order.extensionCount += 1;
-            order.returnDate = new Date(new Date(order.returnDate).getTime() + 86400000);
-          }
-          this.showReturnModal = false; 
-          this.selectedOrder = null;   
-          this.cdr.detectChanges(); 
+        (updatedRental) => {
+          alert("Rental extended successfully!");
+          console.log("Updated Rental:", updatedRental);
+    
+          // Dynamically update the UI with the updated rental details
+          order.extensionCount = updatedRental.extensionCount;
+          order.returnDate = updatedRental.returnDate;
+          order.user.securityDeposit = updatedRental.borrower.securityDeposit; // Update user balance
+    
+          this.showReturnModal = false;
+          this.selectedOrder = null;
+          this.cdr.detectChanges(); // Refresh view if needed
         },
         (error) => {
           console.error("Error extending rental:", error);
-          alert(error?.error?.text || "Failed to extend rental!");
+          alert(error?.error?.message || "Failed to extend rental!");
         }
       );
     }
+    
 }
