@@ -12,25 +12,22 @@ export class RentalService {
 
   constructor(private http: HttpClient) {}
 
-  // extendRental(rentalId: number): Observable<string> {
-  //   let params = new HttpParams().set('rentalId', rentalId.toString());
-  //   return this.http.post<string>(`${this.baseUrl}/extend`, null, { params });
-  // }
-
   extendRental(rentalId: number): Observable<any> {
     let params = new HttpParams().set('rentalId', rentalId.toString());
     return this.http.post<Rental>(`${this.baseUrl}/extend`, null, { params });
   }
   
 
-  returnVehicle(orderId: number, kmsDriven: number, damageLevel: string, paymentMethod: string) {
+  returnVehicle(orderId: number, kmsDriven: number, damageLevel: string, paymentMethod: string): Observable<any> {
     let params = new HttpParams()
       .set('kmsDriven', kmsDriven.toString())
       .set('damageLevel', damageLevel)
       .set('paymentMethod', paymentMethod);
   
-    return this.http.put(`${this.baseUrl}/return/${orderId}`, null, { params });
+    return this.http.put<any>(`${this.baseUrl}/return/${orderId}`, null, { params });
   }
+  
+  
 
   getUserSecurityDeposit(userId: number): Observable<number> {
     return this.http.get<number>(`${this.baseUrl2}/user/security-deposit/${userId}`);
