@@ -84,10 +84,6 @@ export class OrderComponent {
   }
   
 
-
-
-
-
     extendRental(order: any) {
       this.rentalService.extendRental(order.id).subscribe(
         (updatedRental) => {

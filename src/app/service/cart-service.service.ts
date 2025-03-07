@@ -27,10 +27,6 @@ export class CartService {
     return this.http.delete(`${this.baseUrl}/remove?userId=${userId}&vehicleId=${vehicleId}`, { responseType: 'text' });
   }
 
-  // ✅ FIXED URL to match backend API
-  // rentVehicle(userId: number, vehicleId: number): Observable<string> {
-  //   return this.http.post<string>(`${this.rentalUrl}/rent/${vehicleId}?userId=${userId}`, {});
-  // }
   rentVehicle(userId: number, vehicleId: number): Observable<string> {
     return this.http.post(`${this.rentalUrl}/rent/${vehicleId}?userId=${userId}`, {}, { responseType: 'text' });
   }

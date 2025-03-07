@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectorRef, Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -19,7 +19,9 @@ export class UserListComponent {
   selectedUser: User | null = null;
   private apiUrl = 'http://localhost:8080/';
 
-  constructor(private http: HttpClient, private snackBar: MatSnackBar) {
+  constructor(private http: HttpClient, private snackBar: MatSnackBar, private cdr: ChangeDetectorRef) {
+  }
+  ngOnInit() {
     this.fetchUsers();
   }
 
@@ -27,16 +29,31 @@ export class UserListComponent {
     return user.userId;
   }
 
+  // fetchUsers() {
+  //   this.http.get<User[]>('http://localhost:8080/renters').subscribe({
+  //     next: (data) => {
+  //       this.users.set([...data]);  
+  //       this.cdr.detectChanges();
+  //     },
+  //     error: (error) => {
+  //       console.error('Error fetching users:', error);
+  //     }
+  //   });
+  // }
   fetchUsers() {
     this.http.get<User[]>('http://localhost:8080/renters').subscribe({
       next: (data) => {
-        this.users.set([...data]); 
+        // Sort users alphabetically by `userName`
+        const sortedUsers = data.sort((a, b) => a.userName.localeCompare(b.userName));
+        this.users.set(sortedUsers); 
+        this.cdr.detectChanges();
       },
       error: (error) => {
         console.error('Error fetching users:', error);
       }
     });
   }
+  
   
   editUser(user: User) {
     this.selectedUser = { ...user };
