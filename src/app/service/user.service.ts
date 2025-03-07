@@ -25,13 +25,13 @@ export class UserService {
   }
   
   
-  
+  //admin
   updateUser(userId: number, updatedUser: User): Observable<User> {
     return this.http.put<User>(`${this.apiUrl}/${userId}`, updatedUser);
   }
   
   
-
+  //user
   updateUserProfile(userId: number, updatedUser: Partial<User>): Observable<User> {
     return this.http.put<User>(`${this.apiUrl}profile/${userId}`, updatedUser);
   }

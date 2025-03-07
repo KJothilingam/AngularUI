@@ -73,7 +73,10 @@ export class OrderComponent {
               } else {
                   alert(response);
                   this.orders = this.orders.filter(order => order.id !== this.selectedOrder.id);
+                  // this.showReturnModal = false;
                   this.showReturnModal = false;
+                  this.selectedOrder = null; 
+                  this.cdr.detectChanges();
               }
           },
           (error) => {
@@ -91,13 +94,16 @@ export class OrderComponent {
       this.rentalService.extendRental(order.id).subscribe(
         (response: any) => {
           alert(response);
+          // console
+          console.log(response);
           this.loadOrders();
           if (!response.includes("limit reached") && !response.includes("Insufficient")) {
             order.extensionCount += 1;
             order.returnDate = new Date(new Date(order.returnDate).getTime() + 86400000);
           }
-          this.router.navigate(['/orders']);
-          // this.ngOnInit();
+          this.showReturnModal = false; 
+          this.selectedOrder = null;   
+          this.cdr.detectChanges(); 
         },
         (error) => {
           console.error("Error extending rental:", error);

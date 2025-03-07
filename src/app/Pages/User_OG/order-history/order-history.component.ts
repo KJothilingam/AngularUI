@@ -21,17 +21,17 @@ export class OrderHistoryComponent {
     this.OrderHistory();
   }
 
+
   OrderHistory() {
     const userId = this.authService.getUserId(); // Get logged-in user ID
     if (!userId) return; // Ensure user is logged in
   
     this.rentalService.getUserHistory(userId).subscribe(data => {
-      this.orders = data;
+      this.orders = [...data].sort((a, b) => b.id - a.id); // Sort orders in descending order
+      console.log(this.orders);
     });
-    console.log(this.orders);
-
   }
-
+  
 }
 
  
