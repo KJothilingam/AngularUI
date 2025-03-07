@@ -29,21 +29,9 @@ export class UserListComponent {
     return user.userId;
   }
 
-  // fetchUsers() {
-  //   this.http.get<User[]>('http://localhost:8080/renters').subscribe({
-  //     next: (data) => {
-  //       this.users.set([...data]);  
-  //       this.cdr.detectChanges();
-  //     },
-  //     error: (error) => {
-  //       console.error('Error fetching users:', error);
-  //     }
-  //   });
-  // }
   fetchUsers() {
     this.http.get<User[]>('http://localhost:8080/renters').subscribe({
       next: (data) => {
-        // Sort users alphabetically by `userName`
         const sortedUsers = data.sort((a, b) => a.userName.localeCompare(b.userName));
         this.users.set(sortedUsers); 
         this.cdr.detectChanges();
