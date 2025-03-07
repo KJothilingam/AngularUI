@@ -54,38 +54,35 @@ export class OrderComponent {
       }
 
   
-      submitReturn() {
-        if (!this.selectedOrder) return;
-
-        const { kmsDriven, damageLevel, paymentMethod } = this.returnDetails;
-
-        this.rentalService.returnVehicle(
-            this.selectedOrder.id, 
-            parseInt(kmsDriven), 
-            damageLevel, 
-            paymentMethod
-        ).subscribe(
-            (response: any) => {
-                if (response?.rental) {
-                    alert(response.message);  
-
-                   
-                    this.orders = this.orders.map(order =>
-                        order.id === response.rental.id ? response.rental : order
-                    );
-
-                    this.showReturnModal = false;
-                    this.selectedOrder = null;
-                    this.cdr.detectChanges();
-                }
-            },
-            (error) => {
-                console.error("Error returning vehicle:", error);
-                const errorMsg = error?.error?.error || "❌ Failed to return vehicle! Please try again.";
-                alert(errorMsg); 
-            }
-        );
-    }
+    submitReturn() {
+      if (!this.selectedOrder) return;
+  
+      const { kmsDriven, damageLevel, paymentMethod } = this.returnDetails;
+  
+      this.rentalService.returnVehicle(
+          this.selectedOrder.id, 
+          parseInt(kmsDriven), 
+          damageLevel, 
+          paymentMethod
+      ).subscribe(
+          (response: any) => {
+              if (response?.rental) {
+                  alert(response.message);  
+                  this.orders = this.orders.filter(order => order.id !== response.rental.id);
+  
+                  this.showReturnModal = false;
+                  this.selectedOrder = null;
+                  this.cdr.detectChanges();
+              }
+          },
+          (error) => {
+              console.error("Error returning vehicle:", error);
+              const errorMsg = error?.error?.error || "❌ Failed to return vehicle! Please try again.";
+              alert(errorMsg); 
+          }
+      );
+  }
+  
 
 
 

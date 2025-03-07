@@ -35,15 +35,17 @@ export class RentalService {
   
   
 
-  
+  //admin
   getAllRentals(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/all`);
   }
   
+  //user
   getUserRentalsID(userId: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl2}/user/${userId}`);
   }
 
+  //history 
   getUserHistory(userId: number): Observable<any[]>{
     return this.http.get<any[]>(`${this.baseUrl2}/history/${userId}`);
   }
